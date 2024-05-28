@@ -21,7 +21,7 @@ export async function login(
       if(res.ok) {
         data = await res.text()
         console.log(data);
-        cookies().set("session", data, { httpOnly: true });
+        cookies().set("quiz-session", data, { httpOnly: true });
       }
     } catch (error) {
       console.log(error);
@@ -40,14 +40,14 @@ export async function login(
   }
 
 export async function logout() {
-    if(cookies().get("session")) {
-      cookies().delete("session");
+    if(cookies().get("quiz-session")) {
+      cookies().delete("quiz-session");
       redirect("/login");
     }
 }
 
 export async function isLogged() {
-    if(cookies().get("session")) return true;
+    if(cookies().get("quiz-session")) return true;
     return false;
 }
 

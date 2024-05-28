@@ -1,4 +1,3 @@
-import { userRoleType } from "./definition"
 
 export const NavPath = [
     {
@@ -15,7 +14,7 @@ export const NavPath = [
     }
 ]
 
-export const userRole : userRoleType[] = [
+export const userRole = [
     {
         value: "TEACHER",
         label: "Teacher"
@@ -25,3 +24,19 @@ export const userRole : userRoleType[] = [
         label: "Student"
     }
 ]
+
+export const pageSize = {
+    TEN: "TEN",
+    FIFTEEN: "FIFTEEN",
+    TWENTY: " TWENTY"
+}
+
+export const order = {
+    ASC: "ASC",
+    DESC: "DESC"
+}
+
+export const orderByQuiz = {
+    NAME: "NAME",
+    DATE: "DATE"
+}
