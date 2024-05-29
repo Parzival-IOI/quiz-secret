@@ -23,7 +23,7 @@ const page = () => {
           <div>
               <div className="flex items-center justify-between">
                 <label htmlFor="email" className="block text-sm font-medium leading-6 ">
-                  email
+                  Email
                 </label>
               </div>
               <div className="mt-2">
@@ -33,14 +33,14 @@ const page = () => {
                   type="email"
                   autoComplete="email"
                   required
-                  className="block w-full h-10 rounded-md border-0 text-black px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full h-10 rounded-md border-0 dark:bg-slate-600 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
 
             <div>
               <label htmlFor="username" className="block text-sm font-medium leading-6 ">
-                username
+                Username
               </label>
               <div className="mt-2">
                 <input
@@ -49,7 +49,7 @@ const page = () => {
                   type="name"
                   autoComplete="username"
                   required
-                  className="block w-full h-10 rounded-md border-0 text-black px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full h-10 rounded-md border-0 dark:bg-slate-600 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -67,7 +67,7 @@ const page = () => {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="block w-full h-10 rounded-md border-0 text-black px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full h-10 rounded-md border-0 dark:bg-slate-600 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>

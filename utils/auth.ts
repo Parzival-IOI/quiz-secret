@@ -2,54 +2,48 @@
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
 
-export async function login(
-    formData: FormData,
-  ) {
-    let data = null;
-    try {
-      const url = process.env.API + "auth";
-      const res = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify({
-          username: formData.get("username"),
-          password: formData.get("password") 
-        }),
-      })
-      if(res.ok) {
-        data = await res.text()
-        console.log(data);
-        cookies().set("quiz-session", data, { httpOnly: true });
-      }
-    } catch (error) {
-      console.log(error);
+export async function login(formData: FormData) {
+  let data = null;
+  try {
+    const url = process.env.API + "auth";
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        username: formData.get("username"),
+        password: formData.get("password") 
+      }),
+    })
+    if(res.ok) {
+      data = await res.text()
+      console.log(data);
+      cookies().set("quiz-session", data, { httpOnly: true });
     }
-    if(data !== null) {
-      redirect("/");
-    }
+  } catch (error) {
+    console.log(error);
   }
+  if(data !== null) {
+    redirect("/");
+  }
+}
 
 
- export async function parseJwt(token: string | null) {
-    if (!token) { return; }
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace('-', '+').replace('_', '/');
-    return JSON.parse(window.atob(base64));
-  }
+export async function parseJwt(token: string | null) {
+  if (!token) { return; }
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url.replace('-', '+').replace('_', '/');
+  return JSON.parse(window.atob(base64));
+}
 
 export async function logout() {
-    if(cookies().get("quiz-session")) {
-      cookies().delete("quiz-session");
-      redirect("/login");
-    }
+  if(cookies().get("quiz-session")) {
+    cookies().delete("quiz-session");
+    redirect("/login");
+  }
 }
 
-export async function isLogged() {
-    if(cookies().get("quiz-session")) return true;
-    return false;
-}
 
 export async function register(formData: FormData) {
   let data = null;
@@ -69,6 +63,8 @@ export async function register(formData: FormData) {
     })
     if(res.ok) {
       data = await res.text();
+    } else {
+      console.log(res);
     }
   } catch (error) {
     console.log(error);
