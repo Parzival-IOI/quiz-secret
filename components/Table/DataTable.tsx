@@ -21,7 +21,7 @@ const DataTable = (props: {fetchTable: Function}) => {
 
   return (
     <div className="h-full w-full flex flex-col justify-between items-center">
-        <div className="w-full flex justify-end pr-4 py-2 gap-2 sm:gap-4">
+        <div className="w-full flex justify-end px-4 py-2 gap-2 sm:gap-4">
             <PageSize loadData={loadData} ref={sizeElement}/>
             <Order loadData={loadData} ref={orderElement}/>
             <Search loadData={loadData} ref={searchElement}/>
