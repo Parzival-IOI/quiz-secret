@@ -55,7 +55,7 @@ const Navbar = (props: {logout: Function}) => {
               {
                 nav.map((item, index) => {
                   return(
-                    <Link href={item.path} key={index} className={`${current === item.path ? 'text-slate-400' : '' } hover:underline first:mt-8`}>{item.name}</Link>
+                    <Link href={item.path} onClick={toggle} key={index} className={`${current === item.path ? 'text-slate-400' : '' } hover:underline first:mt-8`}>{item.name}</Link>
                   );
                 })
               }
