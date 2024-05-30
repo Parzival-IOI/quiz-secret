@@ -10,7 +10,7 @@ const Selection = (props: {option: userRoleType[], name: string, label: string})
                 {
                     props.option.map((item, index) => {
                         return (
-                            <option value={item.value} key={index} className="w-full h-16" >{item.label}</option>
+                            <option value={item.value} key={index} className="w-full h-16 font-sans font-semibold" >{item.label}</option>
                         )
                     })
                 }

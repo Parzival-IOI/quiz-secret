@@ -28,7 +28,9 @@ const DataTable = (props: {fetchTable: Function}) => {
         </div>
 
         <div className="w-full overflow-y-scroll overflow-x-hidden rounded-lg">
-            <div className="bg-slate-300 h-[200vh]"></div>
+            <div className="bg-slate-800 h-[200vh]">
+
+            </div>
         </div>
 
         <Pagination></Pagination>
