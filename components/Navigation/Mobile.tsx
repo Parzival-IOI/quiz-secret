@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react'
 import { Burger, Cross } from '../Icon';
-import LogoutButton from '../LogoutButton';
+import LogoutButton from '../Authentication/LogoutButton';
 import Link from 'next/link';
 
 const Mobile = (props: {current: string, nav: {path: string, name: string}[], logout: Function}) => {
@@ -30,7 +30,7 @@ const Mobile = (props: {current: string, nav: {path: string, name: string}[], lo
           {
             props.nav.map((item, index) => {
               return(
-                <Link href={item.path} onClick={toggle} key={index} className={`${props.current === item.path ? 'text-slate-400' : '' } hover:underline first:mt-8`}>{item.name}</Link>
+                <Link href={item.path} onClick={toggle} key={index} className={`${props.current === item.path ? 'text-slate-400 before:w-full' : 'before:w-0 hover:before:w-full' } px-1 py-1 relative transition-all duration-300 before:content-[''] before:transition-all before:absolute before:bottom-0 before:left-0 before:rounded-md before:h-[8%] before:dark:bg-white before:bg-blue-900`}>{item.name}</Link>
               );
             })
           }

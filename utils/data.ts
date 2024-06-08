@@ -7,10 +7,6 @@ export const NavPath = [
     {
         name: "About",
         path: "/about",
-    },
-    {
-        name: "Contact",
-        path: "/contact",
     }
 ]
 
@@ -40,3 +36,5 @@ export const orderByQuiz = {
     NAME: "NAME",
     DATE: "DATE"
 }
+
+export const quizDataTable = "api/quiz/findAll"

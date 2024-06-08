@@ -1,7 +1,7 @@
 
 import LoginButton from '@/components/LoginButton';
 import Selection from '@/components/Selection';
-import { register } from '@/utils/auth';
+import { register } from '@/utils/actions/auth';
 import { userRole } from '@/utils/data';
 
 const page = () => {

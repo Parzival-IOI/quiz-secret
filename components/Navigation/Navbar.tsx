@@ -16,7 +16,7 @@ const Navbar = (props: {logout: Function}) => {
   return (
     <>
       <nav className="w-full h-16 dark:bg-slate-900 bg-slate-300 shadow-sm shadow-slate-600 flex justify-between items-center sm:px-8 px-6">
-        <Link href={home.path} className={current === "" || current === "/" ? `text-orange-600` : `text-white`}>
+        <Link href={home.path} className={current === "" || current === "/" ? `text-orange-600` : `dark:text-white text-black`}>
           <Home/>
         </Link>
         <Web current={current} nav={nav} logout={props.logout}/>

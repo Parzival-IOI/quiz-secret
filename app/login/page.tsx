@@ -1,6 +1,6 @@
 
-import RegisterButton from '@/components/RegisterButton';
-import { login } from '@/utils/auth';
+import RegisterButton from '@/components/Authentication/RegisterButton';
+import { login } from '@/utils/actions/auth';
 
 const page = () => {
   return (
