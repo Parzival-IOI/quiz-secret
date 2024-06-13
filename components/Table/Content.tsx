@@ -1,7 +1,6 @@
 import { quizzesResponse } from "@/utils/definition"
 
 const Content = (props: {data: quizzesResponse | null}) => {
-  console.log(props.data);
   return (
     <div className="flex flex-col gap-2 px-1">
       {

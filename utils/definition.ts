@@ -11,8 +11,8 @@ export type dataTable = {
     size: string
 }
 
-export type tableResponse = {
-    data: quizzesResponse,
+export type tableResponse <T> = {
+    data: T,
     columns: number
 }
 
@@ -25,7 +25,26 @@ export type quizzesResponse = {
     updatedAt: string
 }[]
 
+export type usersResponse = User[]
+
 export type tokenResponse = {
     accessToken: string,
     refreshToken: string
+}
+
+export type JwtPayload = {
+    iss: string,
+    sub: string,
+    role: string,
+    exp: string,
+    iat: string
+}
+
+export type User = {
+    id: string,
+    name: string,
+    email: string,
+    role: string,
+    createdAt: string,
+    updatedAt: string
 }

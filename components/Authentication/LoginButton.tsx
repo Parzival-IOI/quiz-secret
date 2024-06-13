@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft } from "./Icon";
+import { ArrowLeft } from "@/components/Icon";
 
 const LoginButton = async (props: {label: string}) => {
   return (

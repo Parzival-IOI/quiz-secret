@@ -1,7 +1,7 @@
 "use server";
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
-import { tokenResponse } from '@/utils/definition';
+import { JwtPayload, tokenResponse } from '@/utils/definition';
 
 export async function login(formData: FormData) {
   let data: tokenResponse;
@@ -25,7 +25,7 @@ export async function login(formData: FormData) {
     }
     else {
       console.log(res);
-      throw new Error(res.statusText)
+      throw new Error(res.status.toString())
     }
   } catch (error) {
     console.log(error);
@@ -67,16 +67,22 @@ export async function register(formData: FormData) {
   }
 }
 
-
-export async function parseJwt(token: string | null) {
+export async function parseJwt(token: string | undefined) {
   if (!token) { return; }
   const base64Url = token.split('.')[1];
   const base64 = base64Url.replace('-', '+').replace('_', '/');
-  return JSON.parse(window.atob(base64));
+  return JSON.parse(atob(base64));
 }
 
+export async function getRole() {
+  const token = cookies().get("quiz-session")?.value;
+  const data: JwtPayload|null = await parseJwt(token);
+  if(!data) return "";
+  return data.role;
+} 
+
 export async function logout() {
-  if(cookies().get("quiz-session")) {
+  if(cookies().has("quiz-session")) {
     cookies().delete("quiz-session");
     redirect("/login");
   }

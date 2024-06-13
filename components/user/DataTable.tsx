@@ -5,14 +5,15 @@ import { useEffect, useState } from "react"
 import Order from "@/components/Table/Order"
 import PageSize from "@/components/Table/PageSize"
 import { orderByQuiz, order, pageSize } from "@/utils/data"
-import { quizzesResponse, tableResponse } from "@/utils/definition"
+import { usersResponse, tableResponse } from "@/utils/definition"
 import Content from "./Content"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CustomButton from "../CustomButton"
 
 const DataTable = (props: {fetchTable: Function, api: string}) => {
 
-  const [data, setData] = useState<quizzesResponse | null>(null);
+  const [data, setData] = useState<usersResponse | null>(null);
   const [page, setPage] = useState<number>(0);
   const [column, setColumn] = useState<number>(0);
   const [search, setSearch] = useState<string>("");
@@ -84,7 +85,7 @@ const DataTable = (props: {fetchTable: Function, api: string}) => {
 
   const loadData = async () => {
     try {
-      const res: tableResponse<quizzesResponse>|null = await props.fetchTable({
+      const res: tableResponse<usersResponse>|null = await props.fetchTable({
         search: search,
         orderBy: orderByQuiz.NAME,
         order: orderSort,
@@ -119,10 +120,11 @@ const DataTable = (props: {fetchTable: Function, api: string}) => {
         <PageSize pageSizeFunc={pageSizeFunc} sizePage={pageZero}/>
         <Order orderSortFunc={orderSortFunc} />
         <Search searchPage={searchPage} />
+        <CustomButton path="/user/create" label="Create"/>
       </div>
 
-      <div className="w-full overflow-y-scroll overflow-x-hidden rounded-lg h-[80vh] px-1">
-        <Content data={data}/>
+      <div className="w-full overflow-y-scroll overflow-x-hidden rounded-lg h-[80vh] px-1 relative">
+        <Content data={data} loadData={loadData}/>
       </div>
 
       <Pagination nextPage={nextPage} previousPage={previousPage} firstPage={firstPage} lastPage={lastPage} page={page}/>

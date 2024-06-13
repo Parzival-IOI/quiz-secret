@@ -10,7 +10,33 @@ export const NavPath = [
     }
 ]
 
+export const adminPath = [
+    {
+        name: "User",
+        path: "/user"
+    },
+    {
+        name: "Quiz",
+        path: "/quiz"
+    }
+]
+
 export const userRole = [
+    {
+        value: "TEACHER",
+        label: "Teacher"
+    },
+    {
+        value: "STUDENT",
+        label: "Student"
+    }
+]
+
+export const adminRole = [
+    {
+        value: "ADMIN",
+        label: "Admin"
+    },
     {
         value: "TEACHER",
         label: "Teacher"
@@ -38,3 +64,4 @@ export const orderByQuiz = {
 }
 
 export const quizDataTable = "api/quiz/findAll"
+export const userDataTable = "api/user/findAll"

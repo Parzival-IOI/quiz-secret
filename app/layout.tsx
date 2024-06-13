@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navigation/Navbar";
-import { logout } from "@/utils/actions/auth";
+import { getRole, logout } from "@/utils/actions/auth";
 import { isLogged } from "@/utils/normal";
 
 
@@ -14,16 +14,17 @@ export const metadata: Metadata = {
   description: "Sneaky Little Brat",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const isLogin = isLogged();
+  const userRole = await getRole();
   return (
     <html lang="en">
       <body className={`${inter.className} relative overflow-x-hidden`}>
-          { isLogin && <Navbar logout={logout}/>}
+          { isLogin && <Navbar logout={logout} userRole={userRole}/>}
           {children}
       </body>
     </html>

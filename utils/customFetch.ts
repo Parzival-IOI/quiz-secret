@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { tokenResponse } from "@/utils/definition";
+import { redirect } from "next/navigation";
 
 export async function customFetch(url: string, method: string, body: any) {
   const accessToken = "Bearer " + cookies().get("quiz-session")?.value
@@ -15,9 +16,8 @@ export async function customFetch(url: string, method: string, body: any) {
     }
   )
   if(!res.ok) {
-
     const role = await fetch(
-      process.env.API + "/api/role",
+      process.env.API + "api/role",
       {
         method: "GET",
         headers: { 
@@ -40,9 +40,7 @@ export async function customFetch(url: string, method: string, body: any) {
           }
         }
       )
-      
       if(token.ok) {
-
         const data: tokenResponse = await token.json();
         console.log(data);
         cookies().set("quiz-session", data.accessToken, { httpOnly: true });
@@ -66,6 +64,7 @@ export async function customFetch(url: string, method: string, body: any) {
         }
       }
       else {
+        redirect("\login");
         throw new Error("Something Went Wrong, Can't Refresh Token");
       }
     }

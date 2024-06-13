@@ -5,13 +5,13 @@ import { usePathname } from "next/navigation";
 import Mobile from "@/components/Navigation/Mobile";
 import { Home } from "../Icon";
 import Web from "@/components/Navigation/Web";
+import { getRole } from "@/utils/actions/auth";
 
-const Navbar = (props: {logout: Function}) => {
+const Navbar = (props: {logout: Function, userRole: string}) => {
   
 
   const home = NavPath[0];
   const nav = NavPath.slice(1, NavPath.length);
-
   const current = usePathname();
   return (
     <>
@@ -19,8 +19,8 @@ const Navbar = (props: {logout: Function}) => {
         <Link href={home.path} className={current === "" || current === "/" ? `text-orange-600` : `dark:text-white text-black`}>
           <Home/>
         </Link>
-        <Web current={current} nav={nav} logout={props.logout}/>
-        <Mobile current={current} nav={nav} logout={props.logout}/>
+        <Web current={current} nav={nav} logout={props.logout} userRole={props.userRole}/>
+        <Mobile current={current} nav={nav} logout={props.logout}  userRole={props.userRole}/>
       </nav>
     </>
   )
