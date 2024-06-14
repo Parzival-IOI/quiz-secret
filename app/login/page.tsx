@@ -1,19 +1,56 @@
-
+"use client";
 import RegisterButton from '@/components/Authentication/RegisterButton';
 import { login } from '@/utils/actions/auth';
+import { QueryClient, QueryClientProvider, useMutation } from '@tanstack/react-query';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const queryClient = new QueryClient();
 
 const page = () => {
   return (
+    <QueryClientProvider client={queryClient}>
+      <Form/>
+    </QueryClientProvider>
+  )
+}
+
+export default page
+
+function Form() {
+
+  const{mutate: server_login, isPending} = useMutation({
+    mutationFn: login,
+    onSuccess: () => {
+      notify("Success");
+    },
+    onError: (e) => {
+      notify(e.message);
+    }
+  })
+
+  const notify = (message: string) => {
+    toast(message);
+  };
+  return (
     <>
+      <ToastContainer
+              autoClose={500}
+              hideProgressBar={true}
+              newestOnTop={false}
+              closeOnClick
+              theme="dark"
+            />
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mt-20">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
             Sign in to your account
           </h2>
         </div>
+        {isPending && <div>is Pending</div>}
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action={login}>
+          <form className="space-y-6" action={(formdata: FormData) => server_login(formdata)}>
             <div>
               <label htmlFor="username" className="block text-sm font-medium leading-6 ">
                 Username
@@ -64,9 +101,6 @@ const page = () => {
             <RegisterButton label={"Sign up"} ></RegisterButton>
           </div>
         </div>
-      </div>
-    </>
+      </div></>
   )
 }
-
-export default page

@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
 import { JwtPayload, tokenResponse } from '@/utils/definition';
 
-export async function login(formData: FormData) {
+export const login = async (formData: FormData) => {
   let data: tokenResponse;
   try {
     const url = process.env.API + "auth";
@@ -24,19 +24,18 @@ export async function login(formData: FormData) {
       cookies().set("quiz-session-refresh", data.refreshToken, { httpOnly: true });
     }
     else {
-      console.log(res);
-      throw new Error(res.status.toString())
+      throw new Error(await res.text());
     }
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    throw new Error("Something Went Wrong");
+    throw new Error(error);
   }
   if(data !== null) {
     redirect("/");
   }
 }
 
-export async function register(formData: FormData) {
+export const register = async (formData: FormData) => {
   let data = null;
   try {
     const url = process.env.API + "register";
