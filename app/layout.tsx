@@ -24,7 +24,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} relative overflow-x-hidden`}>
-          { isLogin && <Navbar logout={logout} userRole={userRole}/>}
+          { isLogin && <Navbar userRole={userRole}/>}
           {children}
       </body>
     </html>

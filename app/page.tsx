@@ -1,4 +1,4 @@
-import DataTable from "@/components/Table/DataTable";
+import DataTable from "@/components/main/DataTable";
 import { fetchTable } from "@/utils/actions/listdata";
 import { quizDataTable } from "@/utils/data";
 

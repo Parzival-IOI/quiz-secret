@@ -81,9 +81,31 @@ export async function getRole() {
 } 
 
 export async function logout() {
-  if(cookies().has("quiz-session")) {
-    cookies().delete("quiz-session");
-    redirect("/login");
+  if(cookies().has("quiz-session-refresh")) {
+    try {
+      const url = process.env.API + "quit";
+      const accessToken = "Bearer " + cookies().get("quiz-session-refresh")?.value;
+      const res = await fetch(url, 
+        {
+          method: "POST",
+          headers: {
+            Authorization: accessToken
+          }
+        }
+      )
+      if(res.ok) {
+        cookies().delete("quiz-session");
+        cookies().delete("quiz-session-refresh");
+        redirect("/login");
+      } else {
+        throw new Error("Con't Logout");
+      }
+    }
+    catch (e) {
+      throw e;
+    }
+
+    
   }
 }
 

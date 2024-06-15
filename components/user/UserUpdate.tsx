@@ -4,16 +4,56 @@ import CustomButton from "@/components/CustomButton";
 import Selection from "@/components/Selection";
 import { adminRole } from "@/utils/data";
 import { User } from "@/utils/definition";
-
-const UserUpdate = (props: {data: User, updateAction: Function, id: string}) => {
-  const Action = props.updateAction.bind(null, props.id)
+import { updateUser } from "@/utils/user/updateAction";
+import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-query";
+import { ToastContainer, toast } from "react-toastify";
+import Loading from "../Loading";
+const queryClient = new QueryClient();
+const UserUpdate = (props: {data: User, id: string}) => {
   return (
     <>
-      <div className="w-16">
+    <QueryClientProvider client={queryClient}>
+      <Form data={props.data} id={props.id}/>
+    </QueryClientProvider>
+      
+    </>
+  )
+}
+
+export default UserUpdate
+
+const Form = ({data, id} : {data: User, id: string}) => {
+  
+  const{mutate: server_updateUser, isPending} = useMutation({
+    mutationFn: updateUser.bind(null, id),
+    onSuccess: () => {
+      notify("Success");
+    },
+    onError: (e) => {
+      notify(e.message);
+    }
+  })
+
+  const notify = (message: string) => {
+    toast(message);
+  };
+
+
+  return (
+    <>
+        <ToastContainer
+              autoClose={500}
+              hideProgressBar={true}
+              newestOnTop={false}
+              closeOnClick
+              theme="dark"
+            />
+        {isPending && <Loading/>}
+        <div className="w-16">
           <CustomButton path="/user" label="Back"/>
         </div>
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action={Action}>
+          <form className="space-y-6" action={(formdata: FormData) => server_updateUser(formdata)}>
           <div>
               <div className="flex items-center justify-between">
                 <label htmlFor="email" className="block text-sm font-medium leading-6 ">
@@ -68,7 +108,7 @@ const UserUpdate = (props: {data: User, updateAction: Function, id: string}) => 
               </div>
             </div>
 
-            <Selection option={adminRole} name={"role"} label={"Role"} selectedString={props.data.role}></Selection>
+            <Selection option={adminRole} name={"role"} label={"Role"} selectedString={data.role}></Selection>
 
             <div>
               <div className='h-6'></div>
@@ -81,8 +121,6 @@ const UserUpdate = (props: {data: User, updateAction: Function, id: string}) => 
             </div>
           </form>
         </div>
-    </>
+      </>
   )
 }
-
-export default UserUpdate

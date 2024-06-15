@@ -1,6 +1,7 @@
 "use server";
 
 import { customFetch } from "@/utils/customFetch";
+import { redirect } from "next/navigation";
 
 export const updateUser = async (id: string, formData: FormData) => {
   try {

@@ -1,6 +1,7 @@
 
 "use client"
 import LoginButton from '@/components/Authentication/LoginButton';
+import Loading from '@/components/Loading';
 import Selection from '@/components/Selection';
 import { register } from '@/utils/actions/auth';
 import { userRole } from '@/utils/data';
@@ -44,6 +45,7 @@ function Form() {
               closeOnClick
               theme="dark"
             />
+      {isPending && <Loading/>}
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <LoginButton label={"Return to Sign in"}></LoginButton>
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">

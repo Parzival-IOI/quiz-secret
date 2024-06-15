@@ -20,6 +20,6 @@ export const findOne = async (id: string) => {
     }
   } catch (error) {
     console.log(error);
-    throw new Error("something went wrong")
+    throw error;
   }
 }

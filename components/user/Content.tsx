@@ -2,6 +2,7 @@ import { usersResponse } from "@/utils/definition"
 import { Pencil, Trash } from "@/components/Icon";
 import CustomActionButton from "@/components/CustomActionButton";
 import { deleteUser } from "@/utils/user/deleteAction";
+import CustomDialog from "../CustomDialog";
 
 const Content = (props: {data: usersResponse | null, loadData: Function}) => {
   return (
@@ -27,13 +28,7 @@ const Content = (props: {data: usersResponse | null, loadData: Function}) => {
               <div className=" flex justify-center items-center gap-2">
 
                 <CustomActionButton path={"/user/update/" + d.id} label={Pencil()}/>
-                <button className="px-2 py-2 rounded-md bg-slate-500 hover:bg-slate-700" onClick={() => {
-                      deleteUser(d.id);
-                      props.loadData();
-                    }
-                  }>
-                  {Trash()}
-                </button>
+                <CustomDialog id={d.id} loadData={props.loadData}/>
 
               </div>
             </div>

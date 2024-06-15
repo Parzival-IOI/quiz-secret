@@ -4,7 +4,7 @@ import LogoutButton from '../Authentication/LogoutButton';
 import Dropdown from '@/components/Navigation/Dropdown';
 import { adminPath } from '@/utils/data';
 
-const Web = (props: {nav: {path: string, name: string}[], current: string, logout: Function, userRole: string}) => {
+const Web = (props: {nav: {path: string, name: string}[], current: string, userRole: string}) => {
   return (
     <div className="sm:flex hidden gap-6 items-center justify-end ml-auto">
       {
@@ -18,7 +18,7 @@ const Web = (props: {nav: {path: string, name: string}[], current: string, logou
         })
       }
       {
-        <LogoutButton logout={props.logout}/>
+        <LogoutButton/>
       }
     </div>
   )

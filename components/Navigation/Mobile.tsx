@@ -5,7 +5,7 @@ import LogoutButton from '@/components/Authentication/LogoutButton';
 import Link from 'next/link';
 import { adminPath } from '@/utils/data';
 
-const Mobile = (props: {current: string, nav: {path: string, name: string}[], logout: Function, userRole: string}) => {
+const Mobile = (props: {current: string, nav: {path: string, name: string}[], userRole: string}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   function toggle() {
@@ -25,8 +25,8 @@ const Mobile = (props: {current: string, nav: {path: string, name: string}[], lo
           <Burger/>
         </button>
       }
-      {isOpen && <div onClick={toggle} className="absolute top-0 left-0 bg-slate-600/30 w-full h-screen"></div>}
-      <div className={`${isOpen ? 'translate-x-[45vw]': 'translate-x-[100vw]'} top-0 left-0 h-[100vh] bg-slate-600/90 absolute w-[55%] h-100vh transition ease-in-out duration-1000`}>
+      {isOpen && <div onClick={toggle} className="absolute z-0 top-0 left-0 bg-slate-600/30 w-full h-screen"></div>}
+      <div className={`${isOpen ? 'translate-x-[45vw]': 'translate-x-[100vw]'} top-0 left-0 h-[100vh] bg-slate-600/90 z-50 absolute w-[55%] h-100vh transition ease-in-out duration-1000`}>
         <div className="h-16 flex justify-end items-center px-6">
           <button type="button" onClick={toggle} className=" p-2 rounded-lg ring-1 ring-slate-500 text-white" >
             <Cross/>
@@ -36,12 +36,12 @@ const Mobile = (props: {current: string, nav: {path: string, name: string}[], lo
           {
             nav.map((item, index) => {
               return(
-                <Link href={item.path} onClick={toggle} key={index} className={`${props.current === item.path ? 'text-slate-400 before:w-full' : 'before:w-0 hover:before:w-full' } px-1 py-1 relative transition-all duration-300 before:content-[''] before:transition-all before:absolute before:bottom-0 before:left-0 before:rounded-md before:h-[8%] before:dark:bg-white before:bg-blue-900`}>{item.name}</Link>
+                <Link href={item.path} onClick={toggle} key={index} className={`${props.current === item.path ? 'before:w-full' : 'before:w-0 hover:before:w-full' } text-slate-100 px-1 py-1 relative transition-all duration-300 before:content-[''] before:transition-all before:absolute before:bottom-0 before:left-0 before:rounded-md before:h-[8%] before:dark:bg-white before:bg-blue-300`}>{item.name}</Link>
               );
             })
           }
           {
-            <LogoutButton logout={props.logout}/>
+            <LogoutButton/>
           }
         </div>
       </div>
