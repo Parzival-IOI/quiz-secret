@@ -11,10 +11,10 @@ export const deleteUser = async (id: string) => {
       return data
     } else {
       console.log(res);
-      throw new Error("Can't Delete User")
+      throw new Error(await res.text())
     }
   } catch (error) {
     console.log(error);
-    throw new Error("something went wrong")
+    throw error;
   }
 }

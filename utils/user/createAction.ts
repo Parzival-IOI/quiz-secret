@@ -1,9 +1,9 @@
 "use server"
 
+import { redirect } from "next/navigation";
 import { customFetch } from "../customFetch";
 
 export const createUser = async (formData: FormData) => {
-  let data = null;
   try {
     const url = process.env.API + "api/user/create";
     const res = await customFetch(url, "POST",
@@ -15,13 +15,15 @@ export const createUser = async (formData: FormData) => {
       }),
     )
     if(res.ok) {
-      data = await res.text();
+      const data = await res.text();
     } else {
       console.log(res);
-      throw new Error("Can't Create User")
+      throw new Error(await res.text());
     }
-  } catch (error) {
+  } catch(error) {
     console.log(error);
-    throw new Error("something went wrong")
+    throw error;
   }
+
+  redirect("/user");
 }

@@ -21,6 +21,17 @@ export const adminPath = [
     }
 ]
 
+export const otherPath = [
+    { 
+        name: "My Quiz",
+        path: "/myquiz"
+    },
+    {
+        name: "play",
+        path: "/play"
+    }
+]
+
 export const userRole = [
     {
         value: "TEACHER",

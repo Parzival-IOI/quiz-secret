@@ -1,6 +1,5 @@
 import { cookies } from "next/headers";
 import { tokenResponse } from "@/utils/definition";
-import { redirect } from "next/navigation";
 
 export async function customFetch(url: string, method: string, body: any) {
   const accessToken = "Bearer " + cookies().get("quiz-session")?.value
@@ -27,7 +26,7 @@ export async function customFetch(url: string, method: string, body: any) {
       }
     )
     if(role.ok) {
-      throw new Error("Something Went Wrong, " + res.statusText);
+      throw new Error(await res.text());
     }
     else {
       const refreshToken = "Bearer " + cookies().get("quiz-session-refresh")?.value;
@@ -60,12 +59,11 @@ export async function customFetch(url: string, method: string, body: any) {
         if(newRes.ok) {
           return newRes;
         }else {
-          throw new Error("Something Went Wrong, " + newRes.status)
+          throw new Error(await newRes.text())
         }
       }
       else {
-        redirect("\login");
-        throw new Error("Something Went Wrong, Can't Refresh Token");
+        throw new Error("Can't Refresh Token");
       }
     }
   }

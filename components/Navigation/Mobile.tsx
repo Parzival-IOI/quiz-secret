@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Burger, Cross } from '@/components/Icon';
 import LogoutButton from '@/components/Authentication/LogoutButton';
 import Link from 'next/link';
-import { adminPath } from '@/utils/data';
+import { adminPath, otherPath } from '@/utils/data';
 
 const Mobile = (props: {current: string, nav: {path: string, name: string}[], userRole: string}) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,9 +12,9 @@ const Mobile = (props: {current: string, nav: {path: string, name: string}[], us
     setIsOpen(e => !e);
     console.log(isOpen)
   }
-  let nav = props.nav;
+  let nav = [...props.nav, ...otherPath];
   if(props.userRole === "ROLE_ADMIN") {
-    nav = [...props.nav, ...adminPath];
+    nav = [...nav, ...adminPath];
   }
 
   return (

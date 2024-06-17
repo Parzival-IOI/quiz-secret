@@ -1,7 +1,12 @@
+import DataTable from "@/components/quiz/DataTable"
+import { fetchTable } from "@/utils/actions/listdata"
+import { quizDataTable } from "@/utils/data"
 
 const page = () => {
   return (
-    <div>quiz</div>
+    <main className="mx-auto lg:w-full md:max-w-3xl h-[90vh]">
+      <DataTable fetchTable={fetchTable} api={quizDataTable}></DataTable>
+    </main>
   )
 }
 

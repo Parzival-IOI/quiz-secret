@@ -14,14 +14,14 @@ export async function fetchTable(data: dataTable, path: string) {
 
     const res = await customFetch(url.href, "GET", null);
     if(res.ok) {
-      const quiz = await res.json()
-      return quiz;
+      const data = await res.json()
+      return data;
     }
     else {
-      throw new Error(res.status.toString());
+      throw new Error(await res.text());
     }
   } catch (error) {
     console.log(error);
-    throw new Error("something went wrong");
+    throw error;
   }
 }

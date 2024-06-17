@@ -2,14 +2,15 @@ import Link from 'next/link';
 import React from 'react'
 import LogoutButton from '../Authentication/LogoutButton';
 import Dropdown from '@/components/Navigation/Dropdown';
-import { adminPath } from '@/utils/data';
+import { adminPath, otherPath } from '@/utils/data';
 
 const Web = (props: {nav: {path: string, name: string}[], current: string, userRole: string}) => {
   return (
     <div className="sm:flex hidden gap-6 items-center justify-end ml-auto">
       {
-        props.userRole === "ROLE_ADMIN" && <Dropdown data={adminPath}/>
+        props.userRole === "ROLE_ADMIN" && <Dropdown data={adminPath} name="Admin"/>
       }
+      <Dropdown data={otherPath} name="Others" />
       {
         props.nav.map((item, index) => {
           return(

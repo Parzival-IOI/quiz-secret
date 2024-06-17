@@ -17,7 +17,6 @@ export const updateUser = async (id: string, formData: FormData) => {
     )
     if(res.ok) {
       const data = await res.text();
-      return data
     } else {
       console.log(res);
       throw new Error("Can't Update User")
@@ -26,4 +25,5 @@ export const updateUser = async (id: string, formData: FormData) => {
     console.log(error);
     throw new Error("something went wrong")
   }
+  redirect("/user");
 }

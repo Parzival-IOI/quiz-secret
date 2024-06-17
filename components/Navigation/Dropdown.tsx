@@ -1,11 +1,11 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react"
 import Link from "next/link"
 
-const Dropdown = (props : {data : {name:string, path: string}[]}) => {
+const Dropdown = (props : {data : {name:string, path: string}[], name: string}) => {
   return (
     <Menu>
       <MenuButton className="px-1 py-1 before:w-0 hover:before:w-full relative transition-all duration-300 before:content-[''] before:transition-all before:absolute before:bottom-0 before:left-0 before:rounded-md before:h-[8%] before:dark:bg-white before:bg-blue-900" >
-        Admin
+        {props.name}
       </MenuButton>
       <MenuItems anchor="bottom" className="font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-32 dark:bg-gray-700 dark:divide-gray-600 z-50">
         <div className="py-2 text-sm text-gray-700 dark:text-gray-400">

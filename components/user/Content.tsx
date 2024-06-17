@@ -28,7 +28,7 @@ const Content = (props: {data: usersResponse | null, loadData: Function}) => {
               <div className=" flex justify-center items-center gap-2">
 
                 <CustomActionButton path={"/user/update/" + d.id} label={Pencil()}/>
-                <CustomDialog id={d.id} loadData={props.loadData}/>
+                <CustomDialog id={d.id} loadData={props.loadData} delete={deleteUser}/>
 
               </div>
             </div>
