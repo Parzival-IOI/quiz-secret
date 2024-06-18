@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navigation/Navbar";
-import { getRole, logout } from "@/utils/actions/auth";
+import { getRole } from "@/utils/actions/auth";
 import { isLogged } from "@/utils/normal";
+import { Toaster } from "sonner";
+
 
 
 
@@ -25,6 +27,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${inter.className} relative overflow-x-hidden`}>
           { isLogin && <Navbar userRole={userRole}/>}
+          <Toaster position="bottom-right" visibleToasts={1}/>
           {children}
       </body>
     </html>

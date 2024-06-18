@@ -6,8 +6,8 @@ import { adminRole } from "@/utils/data";
 import { User } from "@/utils/definition";
 import { updateUser } from "@/utils/user/updateAction";
 import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-query";
-import { ToastContainer, toast } from "react-toastify";
 import Loading from "../Loading";
+import { toast } from "sonner";
 const queryClient = new QueryClient();
 const UserUpdate = (props: {data: User, id: string}) => {
   return (
@@ -41,13 +41,6 @@ const Form = ({data, id} : {data: User, id: string}) => {
 
   return (
     <>
-        <ToastContainer
-              autoClose={500}
-              hideProgressBar={true}
-              newestOnTop={false}
-              closeOnClick
-              theme="dark"
-            />
         {isPending && <Loading/>}
         <div className="w-16">
           <CustomButton path="/user" label="Back"/>
@@ -66,6 +59,7 @@ const Form = ({data, id} : {data: User, id: string}) => {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  defaultValue={data.email}
                   required
                   placeholder='Example@gmail.com'
                   className="block w-full h-10 rounded-md border-0 dark:bg-slate-600 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -83,6 +77,7 @@ const Form = ({data, id} : {data: User, id: string}) => {
                   name="username"
                   type="name"
                   autoComplete="username"
+                  defaultValue={data.name}
                   required
                   placeholder='Ex : Parzival'
                   className="block w-full h-10 rounded-md border-0 dark:bg-slate-600 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

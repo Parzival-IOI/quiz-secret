@@ -1,15 +1,15 @@
 'use client'
 
 import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-query";
-import { ToastContainer, toast } from "react-toastify";
+import { Toaster, toast } from 'sonner'
 import Loading from "../Loading";
 import { logout } from "@/utils/actions/auth";
 
-const queryClient = new QueryClient();
+const queryClient1 = new QueryClient();
 
 const LogoutButton = () => {
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient1}>
       <Button/>
     </QueryClientProvider>
     
@@ -34,16 +34,9 @@ const Button = () => {
   };
   return (
     <>
-      <ToastContainer
-                autoClose={500}
-                hideProgressBar={true}
-                newestOnTop={false}
-                closeOnClick
-                theme="dark"
-              />
       {isPending && <Loading/>}
       <div>
-          <button type="button" onClick={() => {server_logout()}} className="px-1 py-1 before:w-0 hover:before:w-full relative transition-all duration-300 before:content-[''] before:transition-all before:absolute before:bottom-0 before:left-0 before:rounded-md before:h-[8%] before:dark:bg-white before:bg-blue-300" >Sign out</button>
+          <button type="button" onClick={() => {server_logout()}} className="text-white px-1 py-1 before:w-0 hover:before:w-full relative transition-all duration-300 before:content-[''] before:transition-all before:absolute before:bottom-0 before:left-0 before:rounded-md before:h-[8%] before:dark:bg-white before:bg-blue-900" >Sign out</button>
       </div>
     </>
   )

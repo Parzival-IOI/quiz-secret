@@ -3,8 +3,7 @@ import RegisterButton from '@/components/Authentication/RegisterButton';
 import Loading from '@/components/Loading';
 import { login } from '@/utils/actions/auth';
 import { QueryClient, QueryClientProvider, useMutation } from '@tanstack/react-query';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'sonner'
 
 const queryClient = new QueryClient();
 
@@ -35,13 +34,6 @@ function Form() {
   };
   return (
     <>
-      <ToastContainer
-              autoClose={500}
-              hideProgressBar={true}
-              newestOnTop={false}
-              closeOnClick
-              theme="dark"
-            />
         {isPending && <Loading/>}
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mt-20">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -61,7 +53,7 @@ function Form() {
                 <input
                   id="username"
                   name="username"
-                  type="name"
+                  type="text"
                   autoComplete="username"
                   required
                   placeholder='Ex : Parzival'

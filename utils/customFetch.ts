@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { tokenResponse } from "@/utils/definition";
+import { redirect } from "next/dist/server/api-utils";
 
 export async function customFetch(url: string, method: string, body: any) {
   const accessToken = "Bearer " + cookies().get("quiz-session")?.value

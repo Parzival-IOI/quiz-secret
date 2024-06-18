@@ -7,8 +7,8 @@ import PageSize from "@/components/Table/PageSize"
 import { orderByQuiz, order, pageSize } from "@/utils/data"
 import { quizzesResponse, tableResponse } from "@/utils/definition"
 import Content from "./Content"
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Toaster, toast } from 'sonner'
+import CustomButton from "../CustomButton"
 
 const DataTable = (props: {fetchTable: Function, api: string}) => {
 
@@ -108,17 +108,11 @@ const DataTable = (props: {fetchTable: Function, api: string}) => {
 
   return (
     <div className="h-full w-full flex flex-col justify-between items-center">
-      <ToastContainer
-        autoClose={500}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick
-        theme="dark"
-      />
       <div className="w-full flex justify-end px-4 py-2 gap-2 sm:gap-4">
         <PageSize pageSizeFunc={pageSizeFunc} sizePage={pageZero} />
         <Order orderSortFunc={orderSortFunc} />
         <Search searchPage={searchPage} />
+        <CustomButton path="/quiz/create" label="Create"/>
       </div>
 
       <div className="w-full overflow-y-scroll overflow-x-hidden rounded-lg h-[80vh] px-1">

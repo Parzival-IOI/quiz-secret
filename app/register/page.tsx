@@ -6,7 +6,7 @@ import Selection from '@/components/Selection';
 import { register } from '@/utils/actions/auth';
 import { userRole } from '@/utils/data';
 import { QueryClient, QueryClientProvider, useMutation } from '@tanstack/react-query';
-import { ToastContainer, toast } from 'react-toastify';
+import { Toaster, toast } from 'sonner'
 const queryClient = new QueryClient();
 
 const page = () => {
@@ -38,13 +38,6 @@ function Form() {
   };
   return (
     <>
-      <ToastContainer
-              autoClose={500}
-              hideProgressBar={true}
-              newestOnTop={false}
-              closeOnClick
-              theme="dark"
-            />
       {isPending && <Loading/>}
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <LoginButton label={"Return to Sign in"}></LoginButton>
