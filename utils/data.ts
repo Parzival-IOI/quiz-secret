@@ -28,7 +28,7 @@ export const otherPath = [
     },
     {
         name: "play",
-        path: "/play"
+        path: "/play/record"
     }
 ]
 
@@ -177,6 +177,11 @@ export const roleMember = [
                 image: "/defaultProfile.bmp",
             },
             {
+                name: "Ol Eevin",
+                position: "API Tester",
+                image: "/defaultProfile.bmp",
+            },
+            {
                 name: "Oem YongSinh",
                 position: "Documentation Specialist",
                 image: "/defaultProfile.bmp",
@@ -188,6 +193,11 @@ export const roleMember = [
         team : [
             {
                 name: "Heng KeaHak",
+                position: "PowerPoint Designer",
+                image: "/defaultProfile.bmp",
+            },
+            {
+                name: "Um Sethey",
                 position: "PowerPoint Designer",
                 image: "/defaultProfile.bmp",
             },

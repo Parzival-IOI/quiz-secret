@@ -71,3 +71,20 @@ export type quiz = {
     createdAt: string,
     updatedAt: string
 }
+
+export type playQuizResponse = {
+    id: string,
+    name: string,
+    description: string,
+    questions: playQuestionResponse[]
+}
+
+export type playQuestionResponse = {
+    id: string,
+    question: string,
+    type: string,
+    answers: {
+        id: string,
+        answer: string
+    }[]
+}
