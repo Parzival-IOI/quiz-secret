@@ -2,7 +2,7 @@
 
 import { customFetch } from "@/utils/customFetch";
 
-export const deleteUser = async (id: string) => {
+export const deleteUserAction = async (id: string) => {
   try {
     const url = process.env.API + "api/user/delete/" + id;
     const res = await customFetch(url, "DELETE",null)

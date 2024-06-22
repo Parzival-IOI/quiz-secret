@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { tokenResponse } from "@/utils/definition";
-import { redirect } from "next/dist/server/api-utils";
+import { permanentRedirect } from "next/navigation";
 
 export async function customFetch(url: string, method: string, body: any) {
   const accessToken = "Bearer " + cookies().get("quiz-session")?.value
@@ -8,7 +8,7 @@ export async function customFetch(url: string, method: string, body: any) {
     url,
     {
       method: method,
-      headers: { 
+      headers: {
         "Content-type": "application/json",
         Authorization : accessToken
       },
@@ -64,7 +64,7 @@ export async function customFetch(url: string, method: string, body: any) {
         }
       }
       else {
-        throw new Error("Can't Refresh Token");
+        permanentRedirect("/login");
       }
     }
   }

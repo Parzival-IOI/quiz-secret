@@ -82,30 +82,47 @@ export async function getRole() {
 
 export async function logout() {
   if(cookies().has("quiz-session-refresh")) {
+    let res;
     try {
       const url = process.env.API + "quit";
-      const accessToken = "Bearer " + cookies().get("quiz-session-refresh")?.value;
-      const res = await fetch(url, 
+      const refreshToken = "Bearer " + cookies().get("quiz-session-refresh")?.value;
+      res = await fetch(url, 
         {
           method: "POST",
           headers: {
-            Authorization: accessToken
+            Authorization: refreshToken
           }
         }
       )
       if(res.ok) {
         cookies().delete("quiz-session");
         cookies().delete("quiz-session-refresh");
-        redirect("/login");
       } else {
-        throw new Error("Con't Logout");
+          const role = await fetch(
+            process.env.API + "api/role",
+            {
+              method: "GET",
+              headers: { 
+                "Content-type": "application/json",
+                Authorization : refreshToken
+              }
+            }
+          )
+          if(role.ok) {
+            throw new Error(await res.text());
+          }
+          else {
+            cookies().delete("quiz-session");
+            cookies().delete("quiz-session-refresh");
+          }
       }
     }
     catch (e) {
       throw e;
     }
-
     
+    if(res.ok) redirect("/login");
+
   }
 }
 

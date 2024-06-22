@@ -1,7 +1,7 @@
 import { User } from "@/utils/definition";
 import { cookies } from "next/headers";
 
-export const findOne = async (id: string) => {
+export const findOneAction = async (id: string) => {
   try {
     const url = process.env.API + "api/user/find/" + id;
     const res = await fetch(url, 

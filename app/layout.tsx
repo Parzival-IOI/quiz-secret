@@ -24,7 +24,7 @@ export default async function RootLayout({
   const isLogin = isLogged();
   const userRole = await getRole();
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <body className={`${inter.className} relative overflow-x-hidden`}>
           { isLogin && <Navbar userRole={userRole}/>}
           <Toaster position="bottom-right" visibleToasts={1}/>

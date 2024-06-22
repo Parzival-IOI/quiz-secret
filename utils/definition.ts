@@ -48,3 +48,43 @@ export type User = {
     createdAt: string,
     updatedAt: string
 }
+
+export type quiz = {
+    id: string,
+    name: string,
+    description: string,
+    visibility: string,
+    questions: {
+        id: string,
+        question: string,
+        type: string,
+        answers: {
+            id: string,
+            answer: string,
+            correct: string,
+            createdAt: string,
+            updatedAt: string
+        }[],
+        createdAt: string,
+        updatedAt: string
+    }[]
+    createdAt: string,
+    updatedAt: string
+}
+
+export type playQuizResponse = {
+    id: string,
+    name: string,
+    description: string,
+    questions: playQuestionResponse[]
+}
+
+export type playQuestionResponse = {
+    id: string,
+    question: string,
+    type: string,
+    answers: {
+        id: string,
+        answer: string
+    }[]
+}

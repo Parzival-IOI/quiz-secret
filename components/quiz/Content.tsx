@@ -2,7 +2,7 @@ import { quizzesResponse } from "@/utils/definition"
 import CustomActionButton from "../CustomActionButton"
 import CustomDialog from "../CustomDialog"
 import { Pencil } from "../Icon"
-import { deleteQuiz } from '@/utils/quiz/deleteAction';
+import { deleteQuizAction } from '@/utils/quiz/deleteAction';
 
 
 const Content = (props: {data: quizzesResponse | null, loadData: Function}) => {
@@ -29,7 +29,7 @@ const Content = (props: {data: quizzesResponse | null, loadData: Function}) => {
               <div className=" flex justify-center items-center gap-2">
 
                 <CustomActionButton path={"/quiz/update/" + d.id} label={Pencil()}/>
-                <CustomDialog id={d.id} loadData={props.loadData} delete={deleteQuiz}/>
+                <CustomDialog id={d.id} loadData={props.loadData} delete={deleteQuizAction} title="Delete Quiz" description="You will Delete This Quiz Permanently"/>
 
               </div>
             </div>
