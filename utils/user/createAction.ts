@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { customFetch } from "../customFetch";
 
-export const createUser = async (formData: FormData) => {
+export const createUserAction = async (formData: FormData) => {
   try {
     const url = process.env.API + "api/user/create";
     const res = await customFetch(url, "POST",

@@ -3,7 +3,7 @@ import { Description, Dialog, DialogPanel, DialogTitle } from '@headlessui/react
 import { useState } from 'react'
 import { Exclaimation, Trash } from './Icon';
 
-const CustomDialog = (props: {id: string, loadData: Function, delete: Function}) => {
+const CustomDialog = (props: {id: string, loadData: Function, delete: Function, title: string, description: string}) => {
   let [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -16,9 +16,11 @@ const CustomDialog = (props: {id: string, loadData: Function, delete: Function})
               <div className='text-red-400'>
                 {Exclaimation()}
               </div>
-              Delete User
+              {
+                props.title
+              }
             </DialogTitle>
-            <Description>This will permanently delete the user</Description>
+            <Description>{props.description}</Description>
             <div className="flex gap-4">
               <button onClick={() => setIsOpen(false)} className='px-2 py-1 ml-auto rounded-md bg-slate-500 hover:bg-slate-700 text-white'>Cancel</button>
               <button onClick={() => {

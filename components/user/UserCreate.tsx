@@ -1,28 +1,29 @@
 "use client";
 
 import { User } from "@/utils/definition";
-import { updateUserAction } from "@/utils/user/updateAction";
 import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-query";
 import Loading from "../Loading";
 import { toast } from "sonner";
 import Form from "./Form";
+import { createUserAction } from "@/utils/user/createAction";
 const queryClient = new QueryClient();
-const UserUpdate = (props: {data: User, id: string}) => {
+
+const UserCreate = (props: {data: User}) => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <FormData data={props.data} id={props.id}/>
+        <FormData data={props.data}/>
       </QueryClientProvider>
     </>
   )
 }
 
-export default UserUpdate
+export default UserCreate
 
-const FormData = ({data, id} : {data: User, id: string}) => {
+const FormData = ({data} : {data: User}) => {
   
-  const{mutate: server_updateUser, isPending} = useMutation({
-    mutationFn: updateUserAction.bind(null, id),
+  const{mutate: server_createUser, isPending} = useMutation({
+    mutationFn: createUserAction,
     onSuccess: () => {
       notify("Success");
     },
@@ -39,7 +40,7 @@ const FormData = ({data, id} : {data: User, id: string}) => {
   return (
     <>
       {isPending && <Loading/>}
-      <Form data={data} action={server_updateUser} />
+      <Form data={data} action={server_createUser} />
     </>
   )
 }

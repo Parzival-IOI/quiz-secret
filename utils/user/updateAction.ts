@@ -3,7 +3,7 @@
 import { customFetch } from "@/utils/customFetch";
 import { redirect } from "next/navigation";
 
-export const updateUser = async (id: string, formData: FormData) => {
+export const updateUserAction = async (id: string, formData: FormData) => {
   try {
     const url = process.env.API + "api/user/update/" + id;
     const body = JSON.stringify({

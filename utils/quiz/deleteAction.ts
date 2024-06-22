@@ -2,7 +2,7 @@
 
 import { customFetch } from "@/utils/customFetch";
 
-export const deleteQuiz = async (id: string) => {
+export const deleteQuizAction = async (id: string) => {
   try {
     const url = process.env.API + "api/quiz/delete/" + id;
     const res = await customFetch(url, "DELETE",null)
