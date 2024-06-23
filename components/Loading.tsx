@@ -1,7 +1,7 @@
 
 const Loading = () => {
   return (
-    <div className="w-full h-[100vh] absolute top-0 left-0 bg-slate-600/80 flex justify-center items-center">
+    <div className="w-full h-full absolute top-0 left-0 bg-slate-600/80 flex justify-center items-center">
       <button type="button" className="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed" >
           <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>

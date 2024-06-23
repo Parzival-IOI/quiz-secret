@@ -67,7 +67,7 @@ const Form = ({id}: {id: string}) => {
                   quizData?.name
                 }
               </div>
-              <div className="indent-4 rounded-lg bg-slate-500 p-2">
+              <div className="indent-4 rounded-lg bg-slate-400 p-2">
                 {
                   quizData?.description
                 }
@@ -82,12 +82,25 @@ const Form = ({id}: {id: string}) => {
             })
           }
           <div className="w-full min-w-full h-[85vh] flex justify-center items-center">
-            <button
+            <div className="w-3/4 mx-auto flex flex-col gap-4 sm:gap-12 justify-center items-center ">
+              <div className="sm:text-2xl text-lg text-center">
+                <span><strong>Quiz: </strong></span>
+                {
+                  quizData?.name
+                }
+              </div>
+              <div className="rounded-lg bg-slate-400 p-2">
+                This Quiz is Conclude with 
+                <strong className="px-1 text-cyan-400">{quizData?.questions.length}</strong>
+                questions
+              </div>
+              <button
                 type="submit"
                 className="flex w-24 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Submit
               </button>
+            </div>
           </div>
         </Carousel>
       </form>

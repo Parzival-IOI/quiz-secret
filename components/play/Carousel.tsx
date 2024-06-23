@@ -25,17 +25,17 @@ const Carousel = ({ children, length}: Readonly<{children: React.ReactNode, leng
       </div>
       <div className="flex items-center text-white p-4">
         { (current > 0) &&
-          <button type="button" onClick={previous} className="bg-white/30 rounded-full p-2 hover:bg-slate-500 absolute left-4 sm:left-12 top-1/2 z-20" >
+          <button type="button" onClick={previous} className="dark:bg-white/30 bg-slate-400 rounded-full p-2 hover:bg-slate-500 absolute left-4 sm:left-12 top-1/2 z-20" >
             <Previous/>
           </button>
         }
         { (current < (length ?? 0) - 1) &&
-          <button type="button" onClick={next} className="bg-white/30 rounded-full p-2 hover:bg-slate-500 absolute right-4 sm:right-12 top-1/2 z-20" >
+          <button type="button" onClick={next} className="dark:bg-white/30 bg-slate-400 rounded-full p-2 hover:bg-slate-500 absolute right-4 sm:right-12 top-1/2 z-20" >
             <Next/>
           </button>
         }
       </div>
-      <div className="absolute bottom-0 h-16 w-full flex items-center justify-center gap-1 z-20 text-white px-4 sm:px-8 ">
+      <div className="absolute bottom-0 h-16 w-full flex items-center justify-center gap-1 z-20 dark:text-white text-slate-700 px-4 sm:px-8 ">
         {
           [...Array(length)].map((x, i) => {
               return (

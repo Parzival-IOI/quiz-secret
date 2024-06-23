@@ -24,8 +24,8 @@ const Mobile = (props: {current: string, nav: {path: string, name: string}[], us
           <Burger/>
         </button>
       }
-      {isOpen && <div onClick={toggle} className="absolute z-0 top-0 left-0 bg-slate-600/30 w-full h-screen"></div>}
-      <div className={`${isOpen ? 'translate-x-[45vw]': 'translate-x-[100vw]'} top-0 left-0 h-[100vh] bg-slate-600/90 z-50 absolute w-[55%] transition ease-in-out duration-1000`}>
+      {isOpen && <div onClick={toggle} className="absolute z-0 top-0 left-0 bg-slate-600/30 w-full h-full"></div>}
+      <div className={`${isOpen ? 'translate-x-[45vw]': 'translate-x-[100vw]'} top-0 left-0 h-full shadow-lg shadow-slate-400 bg-slate-600/90 z-50 absolute w-[55%] transition ease-in-out duration-1000`}>
         <div className="h-16 flex justify-end items-center px-6">
           <button type="button" onClick={toggle} className=" p-2 rounded-lg ring-1 ring-slate-500 text-white" >
             <Cross/>
