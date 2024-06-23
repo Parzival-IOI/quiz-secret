@@ -22,11 +22,11 @@ const PlayQuestionForm = (props: {question: playQuestionResponse, no: number}) =
               <Field key={index} className="flex items-center gap-2">
                 <Radio
                   value={answer.id}
-                  className="group relative flex cursor-pointer rounded-lg bg-white/5 py-4 px-5 text-white shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/40"
+                  className="group relative flex cursor-pointer rounded-lg bg-white/5 py-4 px-5 dark:text-white text-black shadow-lg transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/40"
                 >
                   <div className="flex w-full items-center justify-between gap-2 sm:gap-4">
                     <div className="text-sm/6">
-                      <Label className="font-semibold text-white">
+                      <Label className="font-semibold">
                         <span className="px-2">{String.fromCharCode(97 + index)}.</span>
                         {answer.answer}
                       </Label>
