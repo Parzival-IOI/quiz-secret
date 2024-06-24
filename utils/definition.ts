@@ -88,3 +88,12 @@ export type playQuestionResponse = {
         answer: string
     }[]
 }
+
+export type recordResponse = {
+    id: string,
+    score: number,
+    quizId: string,
+    quizName: string,
+    createdAt: string,
+    updatedAt: string
+}

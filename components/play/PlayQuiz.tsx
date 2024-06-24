@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { findOneAction } from "@/utils/play/findOneAction";
 import { playQuizResponse } from "@/utils/definition";
 import PlayQuestionForm from "./PlayQuestionForm";
-import { useRouter } from "next/navigation";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +24,10 @@ export default PlayQuiz
 const Form = ({id}: {id: string}) => {
 
   const [quizData, setQuizData] = useState<playQuizResponse>();
+
+  const notify = (message: string) => {
+    toast(message);
+  };
 
   const{mutate: server_playAction, isPending} = useMutation({
     mutationFn: playAction.bind(null, id),
@@ -45,10 +48,6 @@ const Form = ({id}: {id: string}) => {
       notify(e.message);
     }
   })
-
-  const notify = (message: string) => {
-    toast(message);
-  };
 
   useEffect(() => {
     server_findOneAction(id);
@@ -91,7 +90,7 @@ const Form = ({id}: {id: string}) => {
               </div>
               <div className="rounded-lg bg-slate-400 p-2">
                 This Quiz is Conclude with 
-                <strong className="px-1 text-cyan-400">{quizData?.questions.length}</strong>
+                <strong className="px-1">{quizData?.questions.length}</strong>
                 questions
               </div>
               <button

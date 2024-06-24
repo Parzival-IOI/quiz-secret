@@ -18,6 +18,10 @@ export const adminPath = [
     {
         name: "Quiz",
         path: "/quiz"
+    },
+    {
+        name: "Play",
+        path: "/play/allRecord"
     }
 ]
 
@@ -27,7 +31,7 @@ export const otherPath = [
         path: "/myquiz"
     },
     {
-        name: "play",
+        name: "Record",
         path: "/play/record"
     }
 ]
@@ -98,6 +102,9 @@ export const orderByQuiz = {
 
 export const quizDataTable = "api/quiz/findAll"
 export const userDataTable = "api/user/findAll"
+export const recordDataTable = "api/play/findAll"
+export const recordAllDataTable = "api/play/findAllAdmin"
+export const myQuizDataTable = "api/myQuiz/findAll"
 
 
 export const member = [

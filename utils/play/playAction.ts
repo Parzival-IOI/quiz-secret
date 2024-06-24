@@ -31,7 +31,7 @@ export const playAction = async (id: string, formData: FormData) => {
     const url = process.env.API + "api/play/quiz/summit";
     res = await customFetch(url, "POST", JSON.stringify(data))
     if(res.ok) {
-      const data = await res.text();
+      const data: {total: number, score: number} = await res.json();
     } else {
       console.log(res);
       throw new Error(await res.text())
@@ -41,6 +41,6 @@ export const playAction = async (id: string, formData: FormData) => {
     throw error;
   }
   if(res.ok) {
-    redirect("/")
+    redirect("/play/record")
   }
 }
