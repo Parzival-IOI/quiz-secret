@@ -19,10 +19,10 @@ const Content = (props: {data: usersResponse | null, loadData: Function}) => {
           const date = new Date(d.createdAt)
           return (
             <div key={index} className="w-full py-2 px-4 dark:bg-slate-600 bg-slate-700 text-white rounded-lg grid grid-cols-5 gap-1">
-              <div>{d.name}</div>
-              <div>{d.email ?? "Null"}</div>
-              <div>{d.role ?? "Null"}</div>
-              <div>
+              <div className="overflow-x-hidden text-ellipsis">{d.name}</div>
+              <div className="overflow-x-hidden text-ellipsis">{d.email ?? "Null"}</div>
+              <div className="overflow-x-hidden text-ellipsis">{d.role ?? "Null"}</div>
+              <div className="overflow-x-hidden text-ellipsis">
                 {((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + date.getFullYear()}
               </div>
               <div className=" flex justify-center items-center gap-2">

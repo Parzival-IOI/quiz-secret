@@ -1,9 +1,12 @@
-import React from 'react'
+import DataTable from "@/components/myQuiz/DataTable"
+import { fetchTable } from "@/utils/actions/listdata"
+import { myQuizDataTable } from "@/utils/data"
+
 
 const page = () => {
   return (
-    <main className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-      my quiz
+    <main className="mx-auto lg:w-full md:max-w-3xl h-[90vh]">
+      <DataTable  fetchTable={fetchTable} api={myQuizDataTable}/>
     </main>
   )
 }
