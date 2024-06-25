@@ -7,7 +7,7 @@ import PageSize from "@/components/Table/PageSize"
 import { orderByQuiz, order, pageSize } from "@/utils/data"
 import { quizzesResponse, tableResponse } from "@/utils/definition"
 import Content from "./Content"
-import { Toaster, toast } from 'sonner'
+import { toast } from 'sonner'
 
 const DataTable = (props: {fetchTable: Function, api: string}) => {
 

@@ -5,7 +5,7 @@ import { recordDataTable } from "@/utils/data"
 
 const page = () => {
   return (
-    <main className="mx-auto lg:w-full md:max-w-3xl h-[90vh]">
+    <main className="mx-auto lg:w-full md:max-w-4xl h-[90vh]">
       <DataTable  fetchTable={fetchTable} api={recordDataTable}/>
     </main>
   )
