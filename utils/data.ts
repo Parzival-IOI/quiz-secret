@@ -112,7 +112,7 @@ export const member = [
     {
         name: "Hor KimHouy",
         position: "Team Leader",
-        image: "/horkimhouy.jpg",
+        image: "/kimhouy.jpg",
     },
     {
         name: "Hout Rithy",
@@ -152,7 +152,7 @@ export const roleMember = [
             {
                 name: "Hor KimHouy",
                 position: "Backend Developer",
-                image: "/HorKimHouy.jpg",
+                image: "/kimhouy.jpg",
             },
             {
                 name: "Hout Rithy",
@@ -172,7 +172,7 @@ export const roleMember = [
             {
                 name: "Hor KimHouy",
                 position: "Frontend Support",
-                image: "/HorKimHouy.jpg",
+                image: "/kimhouy.jpg",
             },
         ]
     },
