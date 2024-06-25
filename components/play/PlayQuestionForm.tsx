@@ -26,9 +26,9 @@ const PlayQuestionForm = (props: {question: playQuestionResponse, no: number}) =
                 >
                   <div className="flex w-full items-center justify-between gap-2 sm:gap-4">
                     <div className="text-sm/6">
-                      <Label className="font-semibold">
+                      <Label className="font-semibold flex">
                         <span className="px-2">{String.fromCharCode(97 + index)}.</span>
-                        {answer.answer}
+                        <span>{answer.answer}</span>
                       </Label>
                     </div>
                     <Check className="fill-white transition group-data-[checked]:block hidden" />

@@ -4,14 +4,15 @@ import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-q
 import { toast } from "sonner";
 import { useCallback, useEffect, useState } from "react";
 import Loading from "../Loading";
-import { findOneAction } from "@/utils/quiz/findOneAction";
-import { quiz } from "@/utils/definition";
-import { Check } from "../Icon";
+import { playFindOneViewResposne, quiz } from "@/utils/definition";
+import { Check, Wrong } from "../Icon";
 import { useRouter } from "next/navigation";
+import { findOneViewAction } from "@/utils/play/findOneViewAction";
+import Answer from "../quiz/Answer";
 
 const queryClient = new QueryClient();
 
-const ViewQuiz = ({id}: { id: string}) => {
+const ViewPlay = ({id}: { id: string}) => {
   return (
     <QueryClientProvider client={queryClient}>
       <View id={id} />
@@ -19,12 +20,12 @@ const ViewQuiz = ({id}: { id: string}) => {
   )
 }
 
-export default ViewQuiz
+export default ViewPlay
 
 
 const View = ({id} : {id: string}) => {
 
-  const [quizData, setQuizData] = useState<quiz | undefined>();
+  const [quizData, setQuizData] = useState<playFindOneViewResposne | undefined>();
 
   const router = useRouter();
 
@@ -34,7 +35,7 @@ const View = ({id} : {id: string}) => {
 
 
   const{mutate: server_viewQuizAction, isPending} = useMutation({
-    mutationFn: findOneAction,
+    mutationFn: findOneViewAction,
     onSuccess: (data) => {
       setQuizData(data)
       toast("success");
@@ -62,24 +63,19 @@ const View = ({id} : {id: string}) => {
             <div className="sm:text-2xl text-lg text-center">
               <span><strong>Quiz: </strong></span>
               {
-                quizData?.name
+                quizData?.quizName
               }
-              &nbsp;(
-              {
-                quizData?.visibility
-              }
-              )
             </div>
             <div className="indent-4 rounded-lg bg-slate-400 p-2">
               {
-                quizData?.description
+                quizData?.quizDescription
               }
             </div>
           </div>
         </div>
         <div className="mb-12 sm:px-2 px-4">
         {
-          quizData?.questions.map((item, index) => {
+          quizData?.answered.map((item, index) => {
             return (
               <>
                 <div className=" pb-4 pt-8">
@@ -95,7 +91,7 @@ const View = ({id} : {id: string}) => {
                       return (
                         <div key={index} className="flex items-center gap-2">
                           <div
-                            className={`group relative flex cursor-pointer rounded-lg bg-white/5 py-4 px-5 dark:text-white text-black shadow-lg ${answer.correct ? "outline-1 outline-white bg-white/40" : "outline-none"}`}
+                            className={`group relative flex cursor-pointer rounded-lg bg-white/5 py-4 px-5 dark:text-white text-black shadow-lg ${answer.pick ? "outline-1 outline-white bg-white/40" : "outline-none"}`}
                           >
                             <div className="flex w-full items-center justify-between gap-2 sm:gap-4">
                               <div className="text-sm/6 font-semibold flex">
@@ -104,7 +100,8 @@ const View = ({id} : {id: string}) => {
                                   {answer.answer}
                                 </span>
                               </div>
-                              { answer.correct && <Check className="text-green-500" />}
+                              { (answer.pick == true && answer.correct == true)  && <Check className="text-green-500" />}
+                              { (answer.pick == true && answer.correct == false)  && <Wrong className="text-red-500" />}
                             </div>
                           </div>
                         </div>

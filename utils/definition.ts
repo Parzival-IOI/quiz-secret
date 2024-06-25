@@ -94,6 +94,26 @@ export type recordResponse = {
     score: number,
     quizId: string,
     quizName: string,
+    username: string,
+    createdAt: string,
+    updatedAt: string
+}
+
+export type playFindOneViewResposne = {
+    id: string,
+    score: number,
+    answered: {
+        question: string,
+        type: string,
+        answers: {
+            answer: string,
+            correct: boolean,
+            pick: boolean
+        }[]
+    }[],
+    quizId: string,
+    quizName: string,
+    quizDescription: string,
     createdAt: string,
     updatedAt: string
 }

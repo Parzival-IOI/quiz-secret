@@ -18,7 +18,7 @@ const Content = (props: {data: quizzesResponse | null, loadData: Function}) => {
         props.data?.map((d, index)=> {
           const date = new Date(d.createdAt)
           return (
-            <div key={index} className="w-full py-2 px-4 dark:bg-slate-600 bg-slate-700 text-white rounded-lg  grid grid-cols-4 gap-1">
+            <div key={index} className="w-full py-2 px-4 dark:bg-slate-600 bg-slate-700 text-white rounded-lg grid grid-cols-4  items-start sm:items-center gap-1">
               <div className="overflow-x-hidden text-ellipsis">{d.name}</div>
               <div className="overflow-x-hidden text-ellipsis">
                 {d.description}
@@ -26,7 +26,7 @@ const Content = (props: {data: quizzesResponse | null, loadData: Function}) => {
               <div className="w-1/2 text-end overflow-x-hidden text-ellipsis">
                 {((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + date.getFullYear()}
               </div>
-              <div className=" flex justify-center items-center gap-2">
+              <div className=" flex justify-center items-center flex-wrap gap-2">
                 
                 <CustomActionButton path={"/quiz/player/" + d.id} label={<People/>}/>
                 <CustomActionButton path={"/quiz/view/" + d.id} label={<Eye/>}/>
