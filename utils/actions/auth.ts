@@ -98,30 +98,15 @@ export async function logout() {
         cookies().delete("quiz-session");
         cookies().delete("quiz-session-refresh");
       } else {
-          const role = await fetch(
-            process.env.API + "api/role",
-            {
-              method: "GET",
-              headers: { 
-                "Content-type": "application/json",
-                Authorization : refreshToken
-              }
-            }
-          )
-          if(role.ok) {
-            throw new Error(await res.text());
-          }
-          else {
-            cookies().delete("quiz-session");
-            cookies().delete("quiz-session-refresh");
-          }
+        cookies().delete("quiz-session");
+        cookies().delete("quiz-session-refresh");
       }
     }
     catch (e) {
       throw e;
     }
     
-    if(res.ok) redirect("/login");
+    redirect("/login");
 
   }
 }

@@ -112,7 +112,7 @@ export const member = [
     {
         name: "Hor KimHouy",
         position: "Team Leader",
-        image: "/HorKimHouy.jpg",
+        image: "/horkimhouy.jpg",
     },
     {
         name: "Hout Rithy",

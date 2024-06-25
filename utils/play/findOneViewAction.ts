@@ -1,13 +1,14 @@
 "use server";
 
 import { customFetch } from "../customFetch";
+import { playFindOneViewResposne } from "../definition";
 
-export const findOneAction = async (id: string) => {
+export const findOneViewAction = async (id: string): Promise<playFindOneViewResposne | undefined> => {
   try {
-      const url = process.env.API + "api/play/quiz/" + id;
+      const url = process.env.API + "api/play/find/" + id;
       const res = await customFetch(url, "GET", null)
       if(res.ok) {
-        const data = await res.json();
+        const data: playFindOneViewResposne = await res.json();
         return data
       } else {
         console.log(res);

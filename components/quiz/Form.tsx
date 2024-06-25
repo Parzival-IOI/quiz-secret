@@ -1,16 +1,22 @@
 "use client"
 import { quiz } from '@/utils/definition'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import Question from './Question'
 import Selection from '../Selection'
 import { visibility } from '@/utils/data'
-import CustomButton from '../CustomButton'
+import { useRouter } from 'next/navigation'
 
 const Form = (props: {action: Function, data: quiz}) => {
 
   const [question, setQuestion] = useState([
     {question: "", type: ""}
   ])
+
+  const router = useRouter();
+
+  const goBack = useCallback(() => {
+    router.back();
+  }, [router]);
 
   const handleFormChangeQuestion = (index: number, event: React.ChangeEvent<HTMLInputElement>, isQuestion: boolean) => {
     let data = [...question];
@@ -37,7 +43,9 @@ const Form = (props: {action: Function, data: quiz}) => {
   return (
     <>
       <div className="w-16 mb-8 ">
-        <CustomButton path="/quiz" label="Back"/>
+        <button type="button" onClick={() => goBack()} className="px-2 py-1 rounded-md bg-slate-500 hover:bg-slate-700">
+          Back
+        </button>
       </div>
       <div className="sm:mx-auto sm:w-full sm:max-w-lg">
         <form className="space-y-6" action={(formData: FormData) => props.action(formData)} >
