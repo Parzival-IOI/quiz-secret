@@ -6,7 +6,7 @@ import { myQuizDataTable } from "@/utils/data"
 const page = () => {
   return (
     <main className="mx-auto lg:w-full md:max-w-3xl h-[90vh]">
-      <DataTable  fetchTable={fetchTable} api={myQuizDataTable}/>
+      <DataTable fetchTable={fetchTable} api={myQuizDataTable}/>
     </main>
   )
 }

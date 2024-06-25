@@ -1,11 +1,11 @@
-import { recordResponse } from "@/utils/definition"
+import { quizzesResponse, recordResponse } from "@/utils/definition"
 import CustomActionButton from "../CustomActionButton"
 import CustomDialog from "../CustomDialog"
-import { Pencil } from "../Icon"
+import { Eye, Pencil, People } from "../Icon"
 import { deletePlayAction } from "@/utils/play/deletePlayAction";
 
 
-const Content = (props: {data: recordResponse[] | null, loadData: Function}) => {
+const Content = (props: {data: quizzesResponse | null, loadData: Function}) => {
   return (
     <div className="flex flex-col gap-2 px-1">
       <strong className="w-full py-2 px-4 dark:bg-slate-600 bg-slate-700 text-white rounded-t-lg grid grid-cols-4 gap-1 sticky">
@@ -19,14 +19,17 @@ const Content = (props: {data: recordResponse[] | null, loadData: Function}) => 
           const date = new Date(d.updatedAt)
           return (
             <div key={index} className="w-full py-2 px-4 dark:bg-slate-600 bg-slate-700 text-white rounded-lg  grid grid-cols-4 gap-1">
-              <div className="overflow-x-hidden text-ellipsis">{d.quizName}</div>
-              <div className="overflow-x-hidden text-ellipsis">{d.score} points</div>
+              <div className="overflow-x-hidden text-ellipsis">{d.name}</div>
+              <div className="overflow-x-hidden text-ellipsis">{d.description}</div>
               <div className="w-1/2 text-end overflow-x-hidden text-ellipsis">
                 {((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + date.getFullYear()}
               </div>
               <div className=" flex justify-center items-center gap-2">
                 
-                <CustomActionButton path={"/user/update/" + d.id} label={Pencil()}/>
+
+                <CustomActionButton path={"/quiz/player/" + d.id} label={<People/>}/>
+                <CustomActionButton path={"/quiz/view/" + d.id} label={<Eye/>}/>
+                <CustomActionButton path={"/user/update/" + d.id} label={<Pencil/>}/>
                 <CustomDialog id={d.id} loadData={props.loadData} delete={deletePlayAction} title="Delete Record" description="You will Delete This Quiz Record Permanently"/>
 
               </div>

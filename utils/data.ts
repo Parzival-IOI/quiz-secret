@@ -104,7 +104,8 @@ export const quizDataTable = "api/quiz/findAll"
 export const userDataTable = "api/user/findAll"
 export const recordDataTable = "api/play/findAll"
 export const recordAllDataTable = "api/play/findAllAdmin"
-export const myQuizDataTable = "api/myQuiz/findAll"
+export const myQuizDataTable = "api/quiz/v2/myQuiz"
+export const quizPlayerDataTable = "api/quiz/myQuiz/player"
 
 
 export const member = [
