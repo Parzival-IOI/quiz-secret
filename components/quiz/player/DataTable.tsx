@@ -5,14 +5,13 @@ import { useEffect, useState } from "react"
 import Order from "@/components/Table/Order"
 import PageSize from "@/components/Table/PageSize"
 import { orderByQuiz, order, pageSize } from "@/utils/data"
-import { quizzesResponse, recordResponse, tableResponse } from "@/utils/definition"
+import { recordResponse, tableResponse } from "@/utils/definition"
 import Content from "./Content"
 import { toast } from 'sonner'
-import CustomButton from "../CustomButton"
 
-const DataTable = (props: {fetchTable: Function, api: string}) => {
+const DataTable = (props: {fetchTable: Function, api: string, id: string}) => {
 
-  const [data, setData] = useState<quizzesResponse | null>(null);
+  const [data, setData] = useState<recordResponse[] | null>(null);
   const [page, setPage] = useState<number>(0);
   const [column, setColumn] = useState<number>(0);
   const [search, setSearch] = useState<string>("");
@@ -84,13 +83,13 @@ const DataTable = (props: {fetchTable: Function, api: string}) => {
 
   const loadData = async () => {
     try {
-      const res: tableResponse<quizzesResponse>|null = await props.fetchTable({
+      const res: tableResponse<recordResponse[]>|null = await props.fetchTable({
         search: search,
         orderBy: orderByQuiz.NAME,
         order: orderSort,
         page: page,
         size: size,
-      }, props.api);
+      }, props.api, props.id);
       if(res != null) {
         notify("Reload");
         setData(res.data);
@@ -112,7 +111,6 @@ const DataTable = (props: {fetchTable: Function, api: string}) => {
         <PageSize pageSizeFunc={pageSizeFunc} sizePage={pageZero} />
         <Order orderSortFunc={orderSortFunc} />
         <Search searchPage={searchPage} />
-        <CustomButton path="/quiz/create" label="Create"/>
       </div>
 
       <div className="w-full overflow-y-scroll overflow-x-hidden rounded-lg h-[80vh] px-1">
