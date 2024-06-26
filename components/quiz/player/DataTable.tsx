@@ -15,7 +15,7 @@ const DataTable = (props: {fetchTable: Function, api: string, id: string}) => {
   const [page, setPage] = useState<number>(0);
   const [column, setColumn] = useState<number>(0);
   const [search, setSearch] = useState<string>("");
-  const [orderSort, setOrderSort] = useState<string>(order.ASC);
+  const [orderSort, setOrderSort] = useState<string>(order.DESC);
   const [size, setSize] = useState<string>(pageSize.TEN);
 
   const nextPage = (): void => {
