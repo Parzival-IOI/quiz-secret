@@ -29,16 +29,11 @@ const Answer = (props: {id: number, QId: number, data: {answer: string, isCorrec
       <Field>
         <Label htmlFor="correct" className="block text-sm font-medium leading-6 ">Is Correct</Label>
         <div className="mt-2">
-              <Select name={"questions.answers.correct"} id="correct" onChange={event => props.handleFormChangeAnswer(props.id, event, false)} className="block w-full h-10 rounded-md border-0 dark:bg-slate-600 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <Select name={"questions.answers.correct"} defaultValue={props.data.isCorrect.toString().charAt(0).toUpperCase() + props.data.isCorrect.toString().slice(1)} id="correct" onChange={event => props.handleFormChangeAnswer(props.id, event, false)} className="block w-full h-10 rounded-md border-0 dark:bg-slate-600 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                   {
                       isCorrect.map((item, index) => {
-                          let isSelected = false
-                          if(props.data.isCorrect) {
-                              isSelected = true;
-                          }
-
                           return (
-                              <option value={item.value} key={index} selected={isSelected} className="w-full h-16 font-sans font-semibold" >{item.label}</option>
+                              <option value={item.value} key={index} className="w-full h-16 font-sans font-semibold" >{item.label}</option>
                           )
                       })
                   }

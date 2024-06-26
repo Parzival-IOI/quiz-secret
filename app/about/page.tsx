@@ -39,7 +39,7 @@ const Profile = (props: {image: string, name: string, position: string}) => {
   return (
     <div className='w-36'>
         <div className='overflow-hidden w-32 mx-auto aspect-square rounded-full ring-4 ring-blue-600 '>
-          <Image src={props.image} width={500} height={500} alt="Hor Kimhouy" />
+          <Image src={props.image} width={500} height={500} alt={props.name} />
         </div>
         <div className='mt-4 flex flex-col justify-center items-center gap-2 '>
           <div className='text-lg font-bold'>{props.name}</div>
@@ -51,7 +51,7 @@ const Profile = (props: {image: string, name: string, position: string}) => {
 
 const RoleMember = (props: {title: string, profile: {name: string, position: string, image: string}[]}) => {
   return (
-    <div className='mt-16 bg-slate-400 px-2 py-2 sm:px-8 sm:py-4 rounded-2xl shadow-md dark:shadow-slate-100 shadow-slate-500'>
+    <div className='mt-16 bg-slate-500 px-2 py-2 sm:px-8 sm:py-4 rounded-2xl shadow-md dark:shadow-slate-400 shadow-slate-500'>
       <div className='text-lg sm:text-xl font-bold pl-4 sm:pl-0'>{props.title}</div>
       <div className='mt-10 flex flex-wrap justify-start gap-x-16 gap-y-16'>
         {

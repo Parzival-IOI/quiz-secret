@@ -39,7 +39,7 @@ const Carousel = ({ children, length}: Readonly<{children: React.ReactNode, leng
         {
           [...Array(length)].map((x, i) => {
               return (
-                <button type="button" onClick={() => gotoSlide(i)} className={`${i == current ? `scale-125` : ``} `}>
+                <button key={i} type="button" onClick={() => gotoSlide(i)} className={`${i == current ? `scale-125` : ``} `}>
                   <Circle/>
                 </button>
               )

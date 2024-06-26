@@ -81,7 +81,7 @@ const View = ({id} : {id: string}) => {
         {
           quizData?.questions.map((item, index) => {
             return (
-              <>
+              <div key={index}>
                 <div className=" pb-4 pt-8">
                   <span className="px-2">{index + 1}.</span>
                   {
@@ -112,7 +112,7 @@ const View = ({id} : {id: string}) => {
                     })
                   }
                 </div>
-              </>
+              </div>
             )
           })
         }
