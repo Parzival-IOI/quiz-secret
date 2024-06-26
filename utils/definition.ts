@@ -16,14 +16,16 @@ export type tableResponse <T> = {
     columns: number
 }
 
-export type quizzesResponse = {
+export type quizzesResponse = quizResponse[]
+
+export type quizResponse = {
     id: string,
     name: string,
     description: string,
     visibility: string,
     createdAt: string,
     updatedAt: string
-}[]
+} 
 
 export type usersResponse = User[]
 

@@ -11,7 +11,7 @@ const CustomDialog = (props: {id: string, loadData: Function, delete: Function, 
       <button className="px-2 py-2 rounded-md dark:bg-slate-500 dark:hover:bg-slate-700 bg-slate-400 hover:bg-slate-300" onClick={() => { setIsOpen(true); }}>{Trash()}</button>
       <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-30">
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <DialogPanel className="max-w-lg space-y-4 shadow-sm shadow-slate-300 bg-slate-950/90 dark:bg-slate-300/90 text-white dark:text-black px-8 py-4 rounded-lg">
+          <DialogPanel className="max-w-lg space-y-4 shadow-sm shadow-slate-300 bg-slate-950/95 dark:bg-slate-300/95 text-white dark:text-black px-8 py-4 rounded-lg">
             <DialogTitle className="font-bold flex gap-2 items-center">
               <div className='text-red-400'>
                 {Exclaimation()}

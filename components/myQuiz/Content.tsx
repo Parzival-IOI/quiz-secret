@@ -2,7 +2,7 @@ import { quizzesResponse, recordResponse } from "@/utils/definition"
 import CustomActionButton from "../CustomActionButton"
 import CustomDialog from "../CustomDialog"
 import { Eye, Pencil, People } from "../Icon"
-import { deletePlayAction } from "@/utils/play/deletePlayAction";
+import { deleteQuizAction } from "@/utils/quiz/deleteAction";
 
 
 const Content = (props: {data: quizzesResponse | null, loadData: Function}) => {
@@ -29,7 +29,7 @@ const Content = (props: {data: quizzesResponse | null, loadData: Function}) => {
                 <CustomActionButton path={"/quiz/player/" + d.id} label={<People/>}/>
                 <CustomActionButton path={"/quiz/view/" + d.id} label={<Eye/>}/>
                 <CustomActionButton path={"/user/update/" + d.id} label={<Pencil/>}/>
-                <CustomDialog id={d.id} loadData={props.loadData} delete={deletePlayAction} title="Delete Record" description="You will Delete This Quiz Record Permanently"/>
+                <CustomDialog id={d.id} loadData={props.loadData} delete={deleteQuizAction} title="Delete Record" description="You will Delete This Quiz Record Permanently"/>
 
               </div>
             </div>

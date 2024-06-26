@@ -7,8 +7,8 @@ import { Check } from "../Icon";
 const PlayQuestionForm = (props: {question: playQuestionResponse, no: number}) => {
   let [selected, setSelected] = useState("");
   return (
-    <div className="w-full min-w-full h-[85vh] flex flex-col gap-12 sm:gap-16 justify-center items-center">
-      <div>
+    <div className="w-full min-w-full h-[85vh] overflow-y-scroll py-16 flex flex-col gap-12 sm:gap-16 justify-start items-center">
+      <div className="pt-[15vh]">
         <span className="px-2">{props.no}.</span>
         {
           props.question.question
