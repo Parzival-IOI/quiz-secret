@@ -76,7 +76,7 @@ const Form = ({id}: {id: string}) => {
           {
             quizData?.questions.map((question, index) => {
               return (
-                <PlayQuestionForm question={question} no={index + 1} />
+                <PlayQuestionForm key={index} question={question} no={index + 1} />
               )
             })
           }
