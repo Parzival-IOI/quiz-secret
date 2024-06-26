@@ -85,7 +85,7 @@ const DataTable = (props: {fetchTable: Function, api: string}) => {
     try {
       const res: tableResponse<quizzesResponse>|null = await props.fetchTable({
         search: search,
-        orderBy: orderByQuiz.NAME,
+        orderBy: orderByQuiz.DATE,
         order: orderSort,
         page: page,
         size: size,

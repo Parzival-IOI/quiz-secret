@@ -91,7 +91,7 @@ const View = ({id} : {id: string}) => {
                       return (
                         <div key={index} className="flex items-center gap-2">
                           <div
-                            className={`group relative flex cursor-pointer rounded-lg bg-white/5 py-4 px-5 dark:text-white text-black shadow-lg ${answer.pick ? "outline-1 outline-white bg-white/40" : "outline-none"}`}
+                            className={`group relative flex cursor-pointer rounded-lg py-4 px-5 dark:text-white text-black shadow-lg ${answer.pick ? "outline-1 outline-white bg-white/40" : "outline-none bg-white/5"}`}
                           >
                             <div className="flex w-full items-center justify-between gap-2 sm:gap-4">
                               <div className="text-sm/6 font-semibold flex">

@@ -3,12 +3,12 @@ import CustomActionButton from "../CustomActionButton"
 
 const Content = (props: {data: quizzesResponse | null}) => {
   return (
-    <div className="flex flex-col gap-2 px-1">
+    <div className="flex flex-col gap-1 px-1 text-sm">
       {
         props.data?.map((d, index)=> {
           const date = new Date(d.createdAt)
           return (
-            <div key={index} className="w-full py-2 px-4 dark:bg-slate-600 bg-slate-700 text-white rounded-lg flex items-center justify-evenly">
+            <div key={index} className="w-full py-2 px-4 dark:bg-slate-600 bg-slate-500 text-white rounded-lg flex items-center justify-evenly">
               <div className="w-1/2">
                 <strong>{d.name}</strong>
                 <div>

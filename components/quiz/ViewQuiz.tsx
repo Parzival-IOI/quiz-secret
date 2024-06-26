@@ -55,10 +55,10 @@ const View = ({id} : {id: string}) => {
           Back
         </button>
       </div>
-      <div className="mx-auto lg:w-full md:max-w-3xl">
+      <div className="mx-auto lg:w-full md:max-w-4xl">
         {isPending && <Loading /> }
         <div className="h-full w-full flex flex-col justify-between items-center mb-4">
-          <div className="w-3/4 mt-4 mx-auto flex flex-col gap-4 sm:gap-12 justify-center items-center ">
+          <div className="w-full mt-4 mx-auto flex flex-col gap-4 sm:gap-12 justify-center items-center ">
             <div className="sm:text-2xl text-lg text-center">
               <span><strong>Quiz: </strong></span>
               {
@@ -89,13 +89,13 @@ const View = ({id} : {id: string}) => {
                   }
                 </div>
                 <input type="hidden" name="question" />
-                <div className="flex justify-start items-center flex-wrap gap-2 pl-8 sm:gap-4 w-3/4">
+                <div className="flex justify-start items-center flex-wrap gap-2 pl-8 sm:gap-4 w-full">
                   {
                     item.answers.map((answer, index) => {
                       return (
                         <div key={index} className="flex items-center gap-2">
                           <div
-                            className={`group relative flex cursor-pointer rounded-lg bg-white/5 py-4 px-5 dark:text-white text-black shadow-lg ${answer.correct ? "outline-1 outline-white bg-white/40" : "outline-none"}`}
+                            className={`group relative flex cursor-pointer rounded-lg py-4 px-5 dark:text-white text-black shadow-lg ${answer.correct ? "outline-1 outline-white bg-white/40" : "outline-none bg-white/5"}`}
                           >
                             <div className="flex w-full items-center justify-between gap-2 sm:gap-4">
                               <div className="text-sm/6 font-semibold flex">
