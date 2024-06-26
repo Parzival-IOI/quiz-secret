@@ -4,10 +4,10 @@ import Pagination from "@/components/Table/Pagination"
 import { useEffect, useState } from "react"
 import Order from "@/components/Table/Order"
 import PageSize from "@/components/Table/PageSize"
-import { orderByQuiz, order, pageSize } from "@/utils/data"
+import { order, pageSize, orderByUser } from "@/utils/data"
 import { usersResponse, tableResponse } from "@/utils/definition"
 import Content from "./Content"
-import { Toaster, toast } from 'sonner'
+import { toast } from 'sonner'
 import CustomButton from "../CustomButton"
 
 const DataTable = (props: {fetchTable: Function, api: string}) => {
@@ -86,7 +86,7 @@ const DataTable = (props: {fetchTable: Function, api: string}) => {
     try {
       const res: tableResponse<usersResponse>|null = await props.fetchTable({
         search: search,
-        orderBy: orderByQuiz.NAME,
+        orderBy: orderByUser.DATE,
         order: orderSort,
         page: page,
         size: size,

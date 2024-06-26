@@ -4,8 +4,8 @@ import Pagination from "@/components/Table/Pagination"
 import { useEffect, useState } from "react"
 import Order from "@/components/Table/Order"
 import PageSize from "@/components/Table/PageSize"
-import { orderByQuiz, order, pageSize } from "@/utils/data"
-import { quizzesResponse, recordResponse, tableResponse } from "@/utils/definition"
+import { order, pageSize, orderByPlay } from "@/utils/data"
+import { recordResponse, tableResponse } from "@/utils/definition"
 import Content from "./Content"
 import { toast } from 'sonner'
 
@@ -85,7 +85,7 @@ const DataTable = (props: {fetchTable: Function, api: string}) => {
     try {
       const res: tableResponse<recordResponse[]>|null = await props.fetchTable({
         search: search,
-        orderBy: orderByQuiz.NAME,
+        orderBy: orderByPlay.DATE,
         order: orderSort,
         page: page,
         size: size,

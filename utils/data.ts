@@ -91,12 +91,23 @@ export const pageSize = {
 }
 
 export const order = {
-    ASC: "ASC",
-    DESC: "DESC"
+    DESC: "DESC",
+    ASC: "ASC"
 }
 
 export const orderByQuiz = {
     NAME: "NAME",
+    DATE: "DATE"
+}
+
+export const orderByPlay = {
+    NAME: "NAME",
+    DATE: "DATE"
+}
+
+export const orderByUser = {
+    NAME: "NAME",
+    ROLE: "ROLE",
     DATE: "DATE"
 }
 

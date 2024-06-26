@@ -7,7 +7,7 @@ import PageSize from "@/components/Table/PageSize"
 import { orderByQuiz, order, pageSize } from "@/utils/data"
 import { quizzesResponse, tableResponse } from "@/utils/definition"
 import Content from "./Content"
-import { Toaster, toast } from 'sonner'
+import { toast } from 'sonner'
 import CustomButton from "../CustomButton"
 
 const DataTable = (props: {fetchTable: Function, api: string}) => {
@@ -86,7 +86,7 @@ const DataTable = (props: {fetchTable: Function, api: string}) => {
     try {
       const res: tableResponse<quizzesResponse>|null = await props.fetchTable({
         search: search,
-        orderBy: orderByQuiz.NAME,
+        orderBy: orderByQuiz.DATE,
         order: orderSort,
         page: page,
         size: size,
