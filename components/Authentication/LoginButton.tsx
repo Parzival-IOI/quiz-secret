@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "@/components/Icon";
 
-const LoginButton = async (props: {label: string}) => {
+const LoginButton = (props: {label: string}) => {
   return (
     <div className="flex justify-start items-center gap-2">
         <ArrowLeft/>
