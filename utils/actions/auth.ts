@@ -38,7 +38,7 @@ export const login = async (formData: FormData) => {
 export const register = async (formData: FormData) => {
   let data = null;
   try {
-    const url = process.env.API + "register";
+    const url = process.env.API + "v2/register";
     const res = await fetch(url, {
       method: "POST",
       headers: {
@@ -55,14 +55,14 @@ export const register = async (formData: FormData) => {
       data = await res.text();
     } else {
       console.log(res);
-      throw new Error(res.statusText)
+      throw new Error(await res.text())
     }
   } catch (error) {
     console.log(error);
     throw new Error("something went wrong")
   }
   if(data) {
-    redirect("/login");
+    redirect("/register/otp?email="+data);
   }
 }
 
@@ -110,5 +110,70 @@ export async function logout() {
 
   }
 }
+
+
+export const otp = async (formData: FormData) => {
+  let otp = "";
+  formData.forEach((val, key) => {
+    if(key === "otp") {
+      otp = otp + val;
+    }
+  })
+  let data;
+  try {
+    const url = process.env.API + "authenticateEmail";
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        otp: otp,
+        email: formData.get("email")
+      }),
+    })
+    if(res.ok) {
+      data = await res.text();
+    } else {
+      console.log(res);
+      throw new Error(res.statusText)
+    }
+  } catch (error) {
+    console.log(error);
+    throw new Error("something went wrong")
+  }
+  if(data) {
+    redirect("/login");
+  }
+}
+
+
+export const reSendOtp = async ({email} : { email : string}) => {
+  let data;
+  try {
+    const url = process.env.API + "resendOTP";
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        otp: "",
+        email: email
+      }),
+    })
+    if(res.ok) {
+      data = await res.text();
+      return data;
+    } else {
+      console.log(res);
+      throw new Error(res.statusText)
+    }
+  } catch (error) {
+    console.log(error);
+    throw new Error("something went wrong")
+  }
+}
+
 
 

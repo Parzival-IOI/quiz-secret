@@ -119,3 +119,8 @@ export type playFindOneViewResposne = {
     createdAt: string,
     updatedAt: string
 }
+
+export type otpRequest = {
+    otp: string,
+    email: string
+}

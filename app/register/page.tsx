@@ -7,6 +7,7 @@ import { register } from '@/utils/actions/auth';
 import { userRole } from '@/utils/data';
 import { QueryClient, QueryClientProvider, useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner'
+
 const queryClient = new QueryClient();
 
 const page = () => {
@@ -36,6 +37,7 @@ function Form() {
   const notify = (message: string) => {
     toast(message);
   };
+
   return (
     <>
       {isPending && <Loading/>}
