@@ -133,7 +133,10 @@ export const otp = async (formData: FormData) => {
       }),
     })
     if(res.ok) {
-      data = await res.text();
+      data = await res.json()
+      console.log(data);
+      cookies().set("quiz-session", data.accessToken, { httpOnly: true });
+      cookies().set("quiz-session-refresh", data.refreshToken, { httpOnly: true });
     } else {
       console.log(res);
       throw new Error(res.statusText)
@@ -142,8 +145,8 @@ export const otp = async (formData: FormData) => {
     console.log(error);
     throw new Error("something went wrong")
   }
-  if(data) {
-    redirect("/login");
+  if(data !== null) {
+    redirect("/");
   }
 }
 
