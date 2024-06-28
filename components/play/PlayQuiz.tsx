@@ -66,11 +66,14 @@ const Form = ({id}: {id: string}) => {
                   quizData?.name
                 }
               </div>
-              <div className="indent-4 rounded-lg bg-slate-400 p-2">
-                {
-                  quizData?.description
-                }
+              {
+                quizData?.description && 
+                <div className="rounded-lg bg-slate-300  dark:bg-slate-400 p-2">
+                  {
+                    quizData?.description
+                  }
               </div>
+              }
             </div>
           </div>
           {
@@ -88,7 +91,7 @@ const Form = ({id}: {id: string}) => {
                   quizData?.name
                 }
               </div>
-              <div className="rounded-lg bg-slate-400 p-2">
+              <div className="rounded-lg bg-slate-300 dark:bg-slate-400 p-2">
                 This Quiz is Conclude with 
                 <strong className="px-1">{quizData?.questions.length}</strong>
                 questions

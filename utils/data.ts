@@ -96,19 +96,19 @@ export const order = {
 }
 
 export const orderByQuiz = {
+    DATE: "DATE",
     NAME: "NAME",
-    DATE: "DATE"
 }
 
 export const orderByPlay = {
+    DATE: "DATE",
     NAME: "NAME",
-    DATE: "DATE"
 }
 
 export const orderByUser = {
+    DATE: "DATE",
     NAME: "NAME",
     ROLE: "ROLE",
-    DATE: "DATE"
 }
 
 export const quizDataTable = "api/quiz/findAll"
@@ -128,7 +128,7 @@ export const member = [
     {
         name: "Hout Rithy",
         position: "Backup Leader",
-        image: "/defaultProfile.bmp",
+        image: "/rithy.jpg",
     },
     {
         name: "Vorn Navatra",
@@ -168,7 +168,7 @@ export const roleMember = [
             {
                 name: "Hout Rithy",
                 position: "Backend Support",
-                image: "/defaultProfile.bmp",
+                image: "/rithy.jpg",
             },
         ]
     },
@@ -178,7 +178,7 @@ export const roleMember = [
             {
                 name: "Hout Rithy",
                 position: "Frontend Developer",
-                image: "/defaultProfile.bmp",
+                image: "/rithy.jpg",
             },
             {
                 name: "Hor KimHouy",
@@ -222,5 +222,4 @@ export const roleMember = [
             },
         ]
     },
-
 ]

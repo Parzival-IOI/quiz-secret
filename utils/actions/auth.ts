@@ -61,7 +61,7 @@ export const register = async (formData: FormData) => {
     console.log(error);
     throw new Error("something went wrong")
   }
-  if(data) {
+  if(data !== null) {
     redirect("/register/otp?email="+data);
   }
 }
