@@ -19,7 +19,7 @@ const Carousel = ({ children, length}: Readonly<{children: React.ReactNode, leng
   }
 
   return (
-    <div className="overflow-hidden relative">
+    <div className="overflow-hidden relative font-sans">
       <div className="flex transition-transform duration-500 ease-in-out" style={{transform: `translateX(-${current * 100}%)`}}>
         {children}
       </div>

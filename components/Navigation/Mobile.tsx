@@ -11,7 +11,13 @@ const Mobile = (props: {current: string, nav: {path: string, name: string}[], us
   function toggle() {
     setIsOpen(e => !e);
   }
-  let nav = otherPath;
+  let nav;
+  if(props.userRole === "ROLE_ADMIN" || props.userRole === "ROLE_TEACHER") {
+    nav = otherPath;
+  }else {
+    nav = [otherPath[1]]
+  }
+  
   if(props.userRole === "ROLE_ADMIN") {
     nav = [...nav, ...adminPath];
   }

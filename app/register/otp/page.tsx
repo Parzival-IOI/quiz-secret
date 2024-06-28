@@ -66,16 +66,14 @@ const Form = ({email} : {email: string}) => {
           <form className="space-y-6" action={(formdata: FormData) => server_otp(formdata)}>
 
             <div>
-                <div className="flex items-center justify-between">
-                  <label htmlFor="email" className="block text-sm font-medium leading-6 ">
-                    Email
-                  </label>
+                <div className="w-full text-center font-medium text-md leading-6">
+                  We've send an Email to <strong className='text-amber-300'>{email}</strong>, Please check your email!
                 </div>
                 <div className="mt-2 text-slate-400">
                   <input
                     id="email"
                     name="email"
-                    type="email"
+                    type="hidden"
                     autoComplete="email"
                     value={email}
                     required

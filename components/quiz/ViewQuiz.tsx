@@ -70,11 +70,14 @@ const View = ({id} : {id: string}) => {
               }
               )
             </div>
-            <div className="indent-4 rounded-lg bg-slate-400 p-2">
-              {
-                quizData?.description
-              }
-            </div>
+            {
+              quizData?.description &&
+              <div className="rounded-lg dark:bg-slate-400 bg-slate-300 p-2">
+                {
+                  quizData?.description
+                }
+              </div>
+            }
           </div>
         </div>
         <div className="mb-12 sm:px-2 px-4">
@@ -95,7 +98,7 @@ const View = ({id} : {id: string}) => {
                       return (
                         <div key={index} className="flex items-center gap-2">
                           <div
-                            className={`group relative flex cursor-pointer rounded-lg py-4 px-5 dark:text-white text-black shadow-lg ${answer.correct ? "outline-1 outline-white bg-white/40" : "outline-none bg-white/5"}`}
+                            className={`group relative flex cursor-pointer rounded-lg py-4 px-5 shadow-lg ${answer.correct ? "outline-1 outline-white bg-green-400/80 text-black dark:text-white" : "outline-none bg-rose-400/20 text-slate-600 dark:text-slate-400"}`}
                           >
                             <div className="flex w-full items-center justify-between gap-2 sm:gap-4">
                               <div className="text-sm/6 font-semibold flex">
@@ -104,7 +107,7 @@ const View = ({id} : {id: string}) => {
                                   {answer.answer}
                                 </span>
                               </div>
-                              { answer.correct && <Check className="text-green-500" />}
+                              { answer.correct && <Check className="text-white" />}
                             </div>
                           </div>
                         </div>

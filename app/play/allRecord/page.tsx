@@ -1,4 +1,4 @@
-import DataTable from "@/components/play/playerRecord/DataTable"
+import DataTable from "@/components/play/allRecord/DataTable"
 import { fetchTable } from "@/utils/actions/listdata"
 import { recordAllDataTable } from "@/utils/data"
 

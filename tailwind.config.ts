@@ -13,6 +13,13 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        sans: ['var(--font-khmer)'],
+        mono: ['var(--font-roboto)'],
+      },
+      gridTemplateColumns: {
+        'datatable': '35px repeat(auto-fit, minmax(1px, 1fr))',
+      }
     },
   },
   plugins: [],

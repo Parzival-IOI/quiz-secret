@@ -47,12 +47,13 @@ const Scroll = () => {
     mutationFn: fetchInfiniteScroll,
     onSuccess: (data: tableResponse<quizzesResponse>) => {
       if(data) setIsMore(true);
+      if(!data && quiz.length === 0 ) return;
       setQuiz( e => {
           return [...e, ...data.data];
         }
       );
       setColumn(Math.floor(data.columns/10));
-      setPage(e => {
+      setPage( e => {
         return e + 1;
       });
     },
@@ -93,17 +94,16 @@ const Scroll = () => {
         {quiz?.map((item, index)=>{
           if (index === quiz.length - 2 && isMore) {
             return (
-              <CardInfinite key={index} quiz={item} ref={quizRef} />
+              <CardInfinite key={index} id={index} quiz={item} ref={quizRef} />
             )
           }
           return (
-            <CardInfinite key={index} quiz={item} />
+            <CardInfinite key={index} id={index} quiz={item} />
           )
         })}
-        
         {isPending && <CardTemplate />}
       </div>
-      {!isMore && <div className="w-full text-center py-12">Congratulation You've reach the end !</div>}
+      {!isMore && <div className="w-full text-center py-12">You've reach the end !</div>}
     </div>
   )
 }
