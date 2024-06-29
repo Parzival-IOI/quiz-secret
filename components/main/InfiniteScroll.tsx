@@ -74,11 +74,11 @@ const Scroll = () => {
 
     if (!initialized.current) {
       initialized.current = true
+      server_infiniteScroll({page, search});
       return
     }
     if (!initialized2.current) {
       initialized2.current = true
-      server_infiniteScroll({page, search});
       return
     }
     else {
