@@ -39,7 +39,7 @@ const FormData = ({data, id} : {data: User, id: string}) => {
   return (
     <>
       {isPending && <Loading/>}
-      <Form data={data} action={server_updateUser} />
+      <Form data={data} action={server_updateUser} buttonName="Update User" />
     </>
   )
 }
