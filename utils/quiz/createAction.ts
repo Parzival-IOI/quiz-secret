@@ -4,6 +4,8 @@ import { customFetch } from "@/utils/customFetch";
 
 export const createQuizAction = async (formData: FormData) => {
 
+  console.log(formData);
+
   const questions: any = [];
   
   const Q = {
@@ -40,7 +42,7 @@ export const createQuizAction = async (formData: FormData) => {
     } else if (key === "questions.answers.answer") {
       A.answer = val
     } else if (key === "questions.answers.correct") {
-      A.correct = (val === 'true')
+      A.correct = (val === 'on')
       answers.push(JSON.parse(JSON.stringify(A)))
     }
   })

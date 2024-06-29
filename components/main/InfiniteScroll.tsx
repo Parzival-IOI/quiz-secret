@@ -38,6 +38,7 @@ const Scroll = () => {
   });
   
   const initialized = useRef(false);
+  const initialized2 = useRef(false);
 
   const searchPage = (val: string): void => {
     setSearch(val);
@@ -46,8 +47,9 @@ const Scroll = () => {
   const{mutate: server_infiniteScroll, isPending} = useMutation({
     mutationFn: fetchInfiniteScroll,
     onSuccess: (data: tableResponse<quizzesResponse>) => {
-      if(data) setIsMore(true);
+      if(data) setIsMore(true)
       if(!data && quiz.length === 0 ) return;
+
       setQuiz( e => {
           return [...e, ...data.data];
         }
@@ -62,14 +64,6 @@ const Scroll = () => {
     }
   });
 
-
-  useEffect(()=>{
-    if (!initialized.current) {
-      initialized.current = true
-      server_infiniteScroll({page, search});
-    }
-  }, []);
-
   useEffect(()=>{
     if(page > column) {
       setIsMore(false);
@@ -77,11 +71,23 @@ const Scroll = () => {
   }, [page])
 
   useEffect(() => {
+
+    if (!initialized.current) {
+      initialized.current = true
+      return
+    }
+    if (!initialized2.current) {
+      initialized2.current = true
+      server_infiniteScroll({page, search});
+      return
+    }
+    else {
+      setQuiz([]);
+      setPage(0);
+      setIsMore(false);
+      server_infiniteScroll({page, search});
+    }
     
-    setQuiz([]);
-    setPage(0);
-    setIsMore(false);
-    server_infiniteScroll({page, search});
 
   }, [search]);
 
