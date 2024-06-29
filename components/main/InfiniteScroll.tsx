@@ -103,7 +103,7 @@ const Scroll = () => {
         })}
         {isPending && <CardTemplate />}
       </div>
-      {!isMore && <div className="w-full text-center py-12">You've reach the end !</div>}
+      {(!isMore && !isPending) && <div className="w-full text-center py-12">You've reach the end !</div>}
     </div>
   )
 }

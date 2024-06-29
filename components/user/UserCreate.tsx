@@ -40,7 +40,7 @@ const FormData = ({data} : {data: User}) => {
   return (
     <>
       {isPending && <Loading/>}
-      <Form data={data} action={server_createUser} />
+      <Form data={data} action={server_createUser} buttonName="Create User" />
     </>
   )
 }
