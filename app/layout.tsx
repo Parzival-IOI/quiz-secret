@@ -13,6 +13,7 @@ const roboto = Roboto({
   subsets: ['latin'],
   variable: '--font-roboto',
   display: 'swap',
+  preload: false
 })
 
 const kantumruyPro = Kantumruy_Pro({
@@ -21,6 +22,7 @@ const kantumruyPro = Kantumruy_Pro({
   subsets: ['khmer'],
   variable: '--font-khmer',
   display: 'swap',
+  preload: false
 })
 
 export const metadata: Metadata = {
