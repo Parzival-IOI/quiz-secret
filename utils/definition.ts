@@ -56,20 +56,23 @@ export type quiz = {
     name: string,
     description: string,
     visibility: string,
-    questions: {
-        id: string,
-        question: string,
-        type: string,
-        answers: {
-            id: string,
-            answer: string,
-            correct: string,
-            createdAt: string,
-            updatedAt: string
-        }[],
-        createdAt: string,
-        updatedAt: string
-    }[]
+    questions: question[],
+    createdAt: string,
+    updatedAt: string
+}
+
+export type question = {
+    id: string,
+    question: string,
+    type: string,
+    answers: answer[],
+    createdAt: string,
+    updatedAt: string
+}
+export type answer = {
+    id: string,
+    answer: string,
+    correct: string,
     createdAt: string,
     updatedAt: string
 }

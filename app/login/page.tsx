@@ -1,9 +1,11 @@
 "use client";
 import RegisterButton from '@/components/Authentication/RegisterButton';
 import Loading from '@/components/Loading';
+import LoginYeti from '@/components/LoginYeti';
 import { login } from '@/utils/actions/auth';
 import { QueryClient, QueryClientProvider, useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner'
+import UseScript from '@/components/hook/useScript'
 
 const queryClient = new QueryClient();
 
@@ -29,35 +31,46 @@ function Form() {
     }
   })
 
-  const notify = (message: string) => {
+  UseScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js", false);
+  UseScript("/script/morphSvg.js", true);
+  UseScript("/script/yetiAnimation.js", true);
+
+  const notify = (message: string) => { 
     toast(message);
   };
   return (
     <>
         {isPending && <Loading/>}
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mt-8 sm:mt-20">
+        <div className="flex min-h-full flex-1 flex-col justify-center px-6 pb-12 lg:px-8 mt-8 sm:mt-20">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+            <LoginYeti />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
               Sign in to your account
             </h2>
           </div>
-          
 
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form className="space-y-6" action={(formdata: FormData) => server_login(formdata)}>
               <div className="relative z-0 w-full mb-5 group">
-                <input type="text" name="username" id="username" className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                <label htmlFor="username" className="peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                <input type="text" name="username" id="username" max="254" className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                <label htmlFor="username" id="loginUsernameLabel" className="peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                   Username
                 </label>
               </div>
 
-              <div className="relative z-0 w-full mb-5 group">
+              <div className="relative z-0 w-full mb-5 group inputGroup2">
                 <input type="password" name="password" id="password" className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                <label htmlFor="password" className="peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                <label htmlFor="password" id="loginPasswordLabel" className="peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                   Password
                 </label>
+                <label id="showPasswordToggle" htmlFor="showPasswordCheck" className='hidden'>
+                  <input id="showPasswordCheck" type="hidden"/>
+                  <div className="indicator"></div>
+                </label>
               </div>
+
+              
+
               <div>
                 <div className='h-6'></div>
                 <button
