@@ -1,6 +1,5 @@
 "use server";
 import { quiz } from "@/utils/definition";
-import { cookies } from "next/headers";
 import { customFetch } from "../customFetch";
 
 export const findOneAction = async (id: string): Promise<quiz|undefined> => {

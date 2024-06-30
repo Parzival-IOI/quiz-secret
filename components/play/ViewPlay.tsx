@@ -52,7 +52,7 @@ const View = ({id} : {id: string}) => {
   return (
     <>
       <div className="w-16 mb-8 ">
-        <button type="button" onClick={() => goBack()} className="px-2 mx-6 mt-12 lg:mx-8 py-1 rounded-md bg-slate-500 hover:bg-slate-700">
+        <button type="button" onClick={() => goBack()} className="px-2 mx-6 mt-12 lg:mx-8 py-1 rounded-md text-white bg-slate-500 hover:bg-slate-700">
           Back
         </button>
       </div>
