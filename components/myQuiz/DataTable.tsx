@@ -127,7 +127,7 @@ const DataTable = (props: {fetchTable: Function, api: string}) => {
         <Content data={data} loadData={loadData} page={page * getPageSizeNum(size)}/>
       </div>
 
-      <Pagination nextPage={nextPage} previousPage={previousPage} firstPage={firstPage} lastPage={lastPage} page={page}/>
+      <Pagination nextPage={nextPage} previousPage={previousPage} firstPage={firstPage} lastPage={lastPage} page={page} size={getPageSizeNum(size)} column={column} />
     </div>
   )
 }

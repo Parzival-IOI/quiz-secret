@@ -4,37 +4,40 @@ import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-q
 import Loading from "../Loading";
 import { toast } from "sonner";
 import Form from "./Form";
-import { createQuizAction } from "@/utils/quiz/createAction";
+import { findOneAction } from "@/utils/quiz/findOneAction";
+import { quiz } from "@/utils/definition";
+import { useEffect, useState } from "react";
 const queryClient = new QueryClient();
 
-const QuizCreate = () => {
+const QuizUpdate = ({id}: {id: string}) => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <FormData />
+        <FormData id={id} />
       </QueryClientProvider>
     </>
   )
 }
 
-export default QuizCreate
+export default QuizUpdate
 
-const FormData = () => {
+const FormData = ({id} : {id: string}) => {
+
+  const [quiz, setQuiz] = useState<quiz | undefined>(); 
   
   const{mutate: server_createQuiz, isPending} = useMutation({
-    mutationFn: createQuizAction,
-    onSuccess: () => {
-      notify("Success");
+    mutationFn: findOneAction,
+    onSuccess: (data: quiz | undefined) => {
+      setQuiz(data);
     },
     onError: (e) => {
-      notify(e.message);
+      toast(e.message);
     }
   })
 
-  const notify = (message: string) => {
-    toast(message);
-  };
-
+  useEffect(() => {
+    findOneAction(id);
+  }, []);
 
   return (
     <>

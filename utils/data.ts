@@ -133,26 +133,26 @@ export const member = [
     {
         name: "Vorn Navatra",
         position: "Team Member",
-        image: "/defaultProfile.bmp",
+        image: "/navatra.jpg",
     },
     {
         name: "Oem YongSinh",
         position: "Team Member",
-        image: "/defaultProfile.bmp",
+        image: "/sinh.jpg",
     },
     {
         name: "Heng KeaHak",
         position: "Team Member",
-        image: "/defaultProfile.bmp",
+        image: "/keahak.jpg",
     },
     {
         name: "Um Sethey",
         position: "Team Member",
-        image: "/defaultProfile.bmp",
+        image: "/sethey.jpg",
     },{
         name: "Ol Eevin",
         position: "Team Member",
-        image: "/defaultProfile.bmp",
+        image: "/eevin.jpg",
     }
 ]
 
@@ -193,17 +193,17 @@ export const roleMember = [
             {
                 name: "Vorn Navatra",
                 position: "API Tester",
-                image: "/defaultProfile.bmp",
+                image: "/navatra.jpg",
             },
             {
                 name: "Ol Eevin",
                 position: "API Tester",
-                image: "/defaultProfile.bmp",
+                image: "/eevin.jpg",
             },
             {
                 name: "Oem YongSinh",
                 position: "Documentation Specialist",
-                image: "/defaultProfile.bmp",
+                image: "/sinh.jpg",
             },
         ]
     },
@@ -213,12 +213,12 @@ export const roleMember = [
             {
                 name: "Heng KeaHak",
                 position: "PowerPoint Designer",
-                image: "/defaultProfile.bmp",
+                image: "/keahak.jpg",
             },
             {
                 name: "Um Sethey",
                 position: "PowerPoint Designer",
-                image: "/defaultProfile.bmp",
+                image: "/sethey.jpg",
             },
         ]
     },

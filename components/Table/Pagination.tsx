@@ -3,7 +3,7 @@
 
 import { First, Last, Next, Previous } from "../Icon"
 
-const Pagination = (props: {nextPage: Function, previousPage: Function, firstPage: Function, lastPage: Function, page: number}) => {
+const Pagination = (props: {nextPage: Function, previousPage: Function, firstPage: Function, lastPage: Function, page: number, size: number, column: number}) => {
   return (
     <div className="py-1 flex gap-3 text-sm">
       <button onClick={() => props.firstPage()} className="px-2 py-1 dark:bg-slate-500 bg-slate-200  rounded-md" >
@@ -13,9 +13,8 @@ const Pagination = (props: {nextPage: Function, previousPage: Function, firstPag
         <Previous/>
       </button>
       <span className="px-2 py-1 dark:bg-slate-500 bg-slate-200 rounded-md" >
-        Page{' '}
         <strong>
-          {props.page + 1}
+          {props.page + 1} / {Math.ceil(props.column / props.size)}
         </strong>{' '}
       </span>
       <button onClick={() => props.nextPage()} className="px-2 py-1 dark:bg-slate-500 bg-slate-200 rounded-md" >
