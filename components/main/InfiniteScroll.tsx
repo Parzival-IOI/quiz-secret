@@ -32,7 +32,7 @@ const Scroll = () => {
     threshold: 1,
     onChange: (inView) => {
       if(inView) {
-        server_infiniteScroll({page, search});
+        server_infiniteScroll({page: page, search: search});
       }
     }
   });
@@ -85,7 +85,7 @@ const Scroll = () => {
       setQuiz([]);
       setPage(0);
       setIsMore(false);
-      server_infiniteScroll({page, search});
+      server_infiniteScroll({page: 0, search});
     }
     
 

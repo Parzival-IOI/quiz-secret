@@ -3,7 +3,7 @@
 import { customFetch } from "../customFetch";
 import { order, orderByQuiz, pageSize } from "../data";
 
-export const fetchInfiniteScroll = async ({page, search} : {page: number, search: string}) => {
+export const fetchInfiniteScroll = async ({page, search} : {page: number, search: string|""}) => {
   try {
     const url = new URL(process.env.API + "api/quiz/findAll");
     url.searchParams.append("search", search);
