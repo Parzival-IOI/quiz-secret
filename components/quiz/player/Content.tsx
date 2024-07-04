@@ -1,6 +1,6 @@
 import CustomActionButton from "@/components/CustomActionButton";
 import { Eye } from "@/components/Icon";
-import { recordResponse } from "@/utils/definition"
+import { recordResponse } from "@/libs/definition"
 
 
 const Content = (props: {data: recordResponse[] | null, loadData: Function, page: number}) => {

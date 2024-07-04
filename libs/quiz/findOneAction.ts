@@ -1,5 +1,5 @@
 "use server";
-import { quiz } from "@/utils/definition";
+import { quiz } from "@/libs/definition";
 import { customFetch } from "../customFetch";
 
 export const findOneAction = async (id: string): Promise<quiz|undefined> => {

@@ -1,4 +1,4 @@
-import { member, roleMember } from '@/utils/data'
+import { member, roleMember } from '@/libs/data'
 import Image from 'next/image'
 
 const page = () => {
@@ -36,7 +36,7 @@ const page = () => {
   )
 }
 
-export default page
+export default page 
 
 const Profile = (props: {image: string, name: string, position: string}) => {
   return (

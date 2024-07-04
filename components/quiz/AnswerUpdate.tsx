@@ -1,12 +1,15 @@
 "use client";
+import { answer } from "@/libs/definition";
 import { Cross } from "../Icon";
 
 
-const Answer = (props: {id: number, QId: number, handleFormChangeAnswer: Function, removeAnswer: Function, data: {answer: string, isCorrect: boolean}}) => {
+const AnswerUpdate = (props: {id: number, QId: number, handleFormChangeAnswer: Function, removeAnswer: Function, data: answer}) => {
   
   return (
     <div className="px-3 dark:bg-slate-700 bg-slate-400 rounded-xl mt-3 flex items-center">
       
+      <input type="hidden" name="answer.id" defaultValue={props.data.id} />
+
       <div className="w-full" >
         <div className="relative z-0 w-full mb-5 group mt-6">
           <textarea name={"questions.answers.answer"} id={"answer" + props.id} className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required 
@@ -21,12 +24,12 @@ const Answer = (props: {id: number, QId: number, handleFormChangeAnswer: Functio
         
       </div>
       <div className="flex items-center h-5 pl-4">
-          <input id={"correct" + props.id} type="checkbox" value={props.data.isCorrect.toString()} checked={props.data.isCorrect} onChange={(e) => props.handleFormChangeAnswer(props.QId, props.id, e, false)} className="w-6 aspect-square border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 "
+          <input id={"correct" + props.id} type="checkbox" value={props.data.correct} checked={JSON.parse(props.data.correct)} onChange={(e) => props.handleFormChangeAnswer(props.QId, props.id, e, false)} className="w-6 aspect-square border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 "
             name={"questions.answers.correct"}
           />
           {
-            props.data.isCorrect === false &&
-            <input id={"correct" + props.id} type="hidden" value={props.data.isCorrect.toString()} className="w-6 aspect-square border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+            JSON.parse(props.data.correct) === false &&
+            <input id={"correct" + props.id} type="hidden" value={props.data.correct} className="w-6 aspect-square border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
               name={"questions.answers.correct"}
             />
           }
@@ -40,4 +43,4 @@ const Answer = (props: {id: number, QId: number, handleFormChangeAnswer: Functio
   )
 }
 
-export default Answer;
+export default AnswerUpdate;

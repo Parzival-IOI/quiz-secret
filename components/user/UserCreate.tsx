@@ -1,11 +1,11 @@
 "use client";
 
-import { User } from "@/utils/definition";
+import { User } from "@/libs/definition";
 import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-query";
 import Loading from "../Loading";
 import { toast } from "sonner";
 import Form from "./Form";
-import { createUserAction } from "@/utils/user/createAction";
+import { createUserAction } from "@/libs/user/createAction";
 const queryClient = new QueryClient();
 
 const UserCreate = (props: {data: User}) => {

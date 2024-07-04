@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { tokenResponse } from "@/utils/definition";
+import { tokenResponse } from "@/libs/definition";
 import { permanentRedirect } from "next/navigation";
 
 export async function customFetch(url: string, method: string, body: any) {

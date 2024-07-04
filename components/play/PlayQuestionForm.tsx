@@ -1,5 +1,5 @@
 "use client";
-import { playQuestionResponse } from "@/utils/definition"
+import { playQuestionResponse } from "@/libs/definition"
 import { Field, Label, Radio, RadioGroup } from "@headlessui/react";
 import { useState } from "react";
 import { Check } from "../Icon";
@@ -22,7 +22,7 @@ const PlayQuestionForm = (props: {question: playQuestionResponse, no: number}) =
               <Field key={index} className="flex items-center gap-2">
                 <Radio
                   value={answer.id}
-                  className="group relative flex cursor-pointer rounded-lg bg-white/5 py-4 px-5 dark:text-white text-black shadow-lg transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/40"
+                  className="group relative flex cursor-pointer rounded-lg dark:bg-white/20 bg-slate-300 py-4 px-5 dark:text-white text-black shadow-lg transition duration-300 focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white dark:data-[checked]:bg-slate-400/80 data-[checked]:bg-green-400/40"
                 >
                   <div className="flex w-full items-center justify-between gap-2 sm:gap-4">
                     <div className="text-sm/6">
@@ -31,7 +31,7 @@ const PlayQuestionForm = (props: {question: playQuestionResponse, no: number}) =
                         <span>{answer.answer}</span>
                       </Label>
                     </div>
-                    <Check className="fill-white transition group-data-[checked]:block hidden" />
+                    <Check className="fill-white text-green-600 dark:text-white transition group-data-[checked]:block hidden" />
                   </div>
                 </Radio>
               </Field>

@@ -1,6 +1,6 @@
 import UserUpdate from "@/components/user/UserUpdate";
-import { User } from "@/utils/definition";
-import { findOneAction } from "@/utils/user/findOne"
+import { User } from "@/libs/definition";
+import { findOneAction } from "@/libs/user/findOne"
 import { notFound } from "next/navigation";
 
 const page = async ({ params }: { params: { id: string } }) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import CustomButton from '../CustomButton'
-import { User } from '@/utils/definition'
-import { adminRole } from '@/utils/data'
+import { User } from '@/libs/definition'
+import { adminRole } from '@/libs/data'
 import Selection from '../Selection'
 
 const Form = (props: {action: Function, data: User, buttonName: string}) => {

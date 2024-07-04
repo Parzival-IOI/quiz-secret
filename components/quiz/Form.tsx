@@ -2,13 +2,13 @@
 import React, { useCallback, useState } from 'react'
 import Question from './Question'
 import Selection from '../Selection'
-import { visibility } from '@/utils/data'
+import { visibility } from '@/libs/data'
 import { useRouter } from 'next/navigation'
 
 const Form = (props: {action: Function}) => {
 
   const [question, setQuestion] = useState([
-    {question: "", type: ""}
+    {question: "", type: "", answers : [{answer: "", isCorrect: false}]}
   ])
 
   const router = useRouter();
@@ -25,11 +25,12 @@ const Form = (props: {action: Function}) => {
       data[index]["type"] = event.target.value;
 
     }
+      
     setQuestion(data);
   }
 
   const addQuestion = () => {
-    const newQuestion = {question: "", type: ""}
+    const newQuestion = {question: "", type: "", answers: [{answer: "", isCorrect: false}]}
     setQuestion([...question, newQuestion])
   }
 
@@ -37,6 +38,42 @@ const Form = (props: {action: Function}) => {
     const questions = [...question];
     questions.splice(index, 1)
     setQuestion(questions)
+  }
+
+  const handleFormChangeAnswer = (index: number, answerIndex: number, event: React.ChangeEvent<HTMLInputElement>, isAnswer: boolean) => {
+    let data = [...question[index].answers];
+    if(isAnswer) {
+      data[answerIndex]["answer"] = event.target.value;
+    } else {
+      const isCorrect = event.target.value
+      if(isCorrect == "false") {
+        data[answerIndex]["isCorrect"] = true;
+      }
+      else {
+        data[answerIndex]["isCorrect"] = false;
+      }
+    }
+    const temp = question;
+    temp[index]["answers"] = [...data];
+
+    setQuestion(temp.slice())
+  }
+
+  const addAnswer = (index: number) => {
+    const newAnswer = {answer: "", isCorrect: false};
+    const temp = question;
+    temp[index].answers = [...temp[index].answers, newAnswer]
+
+    setQuestion(temp.slice())
+  }
+
+  const removeAnswer = (index: number, answerIndex: number) => {
+    const answers = [...question[index].answers];
+    answers.splice(answerIndex, 1)
+    const temp = question;
+    temp[index].answers = [...answers];
+
+    setQuestion(temp.slice())
   }
 
   return (
@@ -70,7 +107,9 @@ const Form = (props: {action: Function}) => {
           {
             question.map((data, index) => {
               return (
-                <Question key={index} id={index} handleFormChangeQuestion={handleFormChangeQuestion} removeQuestion={removeQuestion}/>
+                <Question key={index} id={index} 
+                handleFormChangeQuestion={handleFormChangeQuestion} data={data} removeQuestion={removeQuestion} 
+                handleFormChangeAnswer={handleFormChangeAnswer} removeAnswer={removeAnswer} addAnswer={addAnswer}  />
               )
             })
           }

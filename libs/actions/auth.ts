@@ -1,30 +1,41 @@
 "use server";
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
-import { JwtPayload, tokenResponse } from '@/utils/definition';
+import { JwtPayload, tokenResponse } from '@/libs/definition';
 
 export const login = async (formData: FormData) => {
-  let data: tokenResponse;
+  let data: tokenResponse|null = null;
+  const body = JSON.stringify({
+    username: formData.get("username"),
+    password: formData.get("password") 
+  })
   try {
-    const url = process.env.API + "auth";
-    const res = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json"
-      },
-      body: JSON.stringify({
-        username: formData.get("username"),
-        password: formData.get("password") 
-      }),
-    })
-    if(res.ok) {
-      data = await res.json()
-      console.log(data);
-      cookies().set("quiz-session", data.accessToken, { httpOnly: true });
-      cookies().set("quiz-session-refresh", data.refreshToken, { httpOnly: true });
-    }
-    else {
-      throw new Error(await res.text());
+    for(let i=0; i<5; i++) {
+      const url = process.env.API + "auth";
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: body,
+        cache: 'no-store'
+      })
+      if(res.ok) {
+        data = await res.json()
+        console.log(data);
+        if(data !== null) {
+          cookies().set("quiz-session", data.accessToken, { httpOnly: true });
+          cookies().set("quiz-session-refresh", data.refreshToken, { httpOnly: true });
+        }
+        break;
+      }
+      else {
+        const err = await res.text();
+        if(err === "User Not Found" || err === "Bad credentials" || err === "Blocked") {
+          throw new Error(err);
+        }
+        continue;
+      }
     }
   } catch (error: any) {
     console.log(error);
@@ -37,6 +48,12 @@ export const login = async (formData: FormData) => {
 
 export const register = async (formData: FormData) => {
   let data = null;
+  const body = JSON.stringify({
+    username: formData.get("username"),
+    password: formData.get("password"),
+    email: formData.get("email"),
+    role: formData.get("role")
+  })
   try {
     const url = process.env.API + "v2/register";
     const res = await fetch(url, {
@@ -44,12 +61,7 @@ export const register = async (formData: FormData) => {
       headers: {
         "Content-type": "application/json"
       },
-      body: JSON.stringify({
-        username: formData.get("username"),
-        password: formData.get("password"),
-        email: formData.get("email"),
-        role: formData.get("role")
-      }),
+      body: body,
     })
     if(res.ok) {
       data = await res.text();

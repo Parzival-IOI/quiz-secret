@@ -1,5 +1,3 @@
-import { quizResponse } from "@/utils/definition"
-import Link from "next/link"
 import { ArrowRight } from "../Icon"
 
 const CardTemplate =() => {

@@ -1,7 +1,7 @@
 "use client";
 
-import { User } from "@/utils/definition";
-import { updateUserAction } from "@/utils/user/updateAction";
+import { User } from "@/libs/definition";
+import { updateUserAction } from "@/libs/user/updateAction";
 import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-query";
 import Loading from "../Loading";
 import { toast } from "sonner";

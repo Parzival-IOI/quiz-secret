@@ -1,6 +1,6 @@
 "use client";
-import { quizzesResponse, tableResponse } from "@/utils/definition";
-import { fetchInfiniteScroll } from "@/utils/main/infiniteScroll";
+import { quizzesResponse, tableResponse } from "@/libs/definition";
+import { fetchInfiniteScroll } from "@/libs/main/infiniteScroll";
 import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-query"
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Roboto, Kantumruy_Pro } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navigation/Navbar";
-import { getRole } from "@/utils/actions/auth";
-import { isLogged } from "@/utils/normal";
+import { getRole } from "@/libs/actions/auth";
+import { isLogged } from "@/libs/normal";
 import { Toaster } from "sonner";
 
 

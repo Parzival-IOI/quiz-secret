@@ -1,14 +1,13 @@
 "use server";
+import { customFetch } from "../customFetch";
 
-import { customFetch } from "@/utils/customFetch";
-
-export const createQuizAction = async (formData: FormData) => {
-
-  console.log(formData);
-
+export const updateQuiz = async (id: string, formData: FormData) => {
+  console.log(id, formData);
+  
   const questions: any = [];
   
   const Q = {
+    id: "",
     question: "",
     type: "",
     answers: [],
@@ -17,6 +16,7 @@ export const createQuizAction = async (formData: FormData) => {
   let answers : any = []
 
   const A = {
+    id: "",
     answer: "",
     correct: false
   }
@@ -25,7 +25,7 @@ export const createQuizAction = async (formData: FormData) => {
 
   formData.forEach((val, key) => {
     val = "" + val;
-    if(key === "questions.question") {
+    if(key === "question.id") {
 
       if(first) {
         first = false;
@@ -35,14 +35,18 @@ export const createQuizAction = async (formData: FormData) => {
         questions.push(JSON.parse(JSON.stringify(Q)));
       }
 
-      Q.question = val
+      Q.id = val
 
-    } else if (key === "questions.type") {
+    } else if (key === "questions.question") {
+      Q.question = val
+    }  else if (key === "questions.type") {
       Q.type = val
+    } else if (key === "answer.id") {
+      A.id = val
     } else if (key === "questions.answers.answer") {
       A.answer = val
     } else if (key === "questions.answers.correct") {
-      A.correct = (val === 'on')
+      A.correct = (val === 'true')
       answers.push(JSON.parse(JSON.stringify(A)))
     }
   })
@@ -59,12 +63,14 @@ export const createQuizAction = async (formData: FormData) => {
     questions: questions
   }
 
+  console.log(JSON.stringify(data, null, 2));
+
   try {
-    const url = process.env.API + "api/quiz/create";
-    const res = await customFetch(url, "POST", JSON.stringify(data))
+    const url = process.env.API + "api/quiz/v2/update/" + id;
+    const res = await customFetch(url, "PUT", JSON.stringify(data))
     if(res.ok) {
       const data = await res.text();
-      return data
+      return data;
     } else {
       console.log(res);
       throw new Error(await res.text())

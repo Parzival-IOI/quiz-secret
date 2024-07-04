@@ -1,6 +1,6 @@
 import DataTable from "@/components/user/DataTable"
-import { fetchTable } from "@/utils/actions/listdata"
-import { userDataTable } from "@/utils/data"
+import { fetchTable } from "@/libs/actions/listdata"
+import { userDataTable } from "@/libs/data"
 
 const page = () => {
   return (

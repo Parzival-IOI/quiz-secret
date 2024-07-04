@@ -1,6 +1,5 @@
 'use client'
-import { pageSize } from '@/utils/data'
-import { forwardRef } from 'react'
+import { pageSize } from '@/libs/data'
 import React from 'react'
 
 const PageSize = (props: {pageSizeFunc: Function, sizePage: Function}) => {
