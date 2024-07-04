@@ -4,8 +4,8 @@ import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-q
 import { toast } from "sonner";
 import { useCallback, useEffect, useState } from "react";
 import Loading from "../Loading";
-import { findOneAction } from "@/utils/quiz/findOneAction";
-import { quiz } from "@/utils/definition";
+import { findOneAction } from "@/libs/quiz/findOneAction";
+import { quiz } from "@/libs/definition";
 import { Check } from "../Icon";
 import { useRouter } from "next/navigation";
 

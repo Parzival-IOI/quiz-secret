@@ -1,4 +1,4 @@
-import { userRoleType } from '@/utils/definition'
+import { userRoleType } from '@/libs/definition'
 import { Field, Label, Select } from '@headlessui/react'
 
 const Selection = (props: {option: userRoleType[], name: string, label: string, selectedString: string}) => {

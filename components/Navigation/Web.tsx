@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react'
 import LogoutButton from '../Authentication/LogoutButton';
 import Dropdown from '@/components/Navigation/Dropdown';
-import { adminPath, otherPath } from '@/utils/data';
+import { adminPath, otherPath } from '@/libs/data';
 
 const Web = (props: {nav: {path: string, name: string}[], current: string, userRole: string}) => {
 

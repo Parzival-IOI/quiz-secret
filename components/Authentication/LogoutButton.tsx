@@ -3,7 +3,7 @@
 import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-query";
 import { Toaster, toast } from 'sonner'
 import Loading from "../Loading";
-import { logout } from "@/utils/actions/auth";
+import { logout } from "@/libs/actions/auth";
 
 const queryClient1 = new QueryClient();
 

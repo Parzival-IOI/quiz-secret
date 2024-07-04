@@ -1,4 +1,4 @@
-import { quizResponse } from "@/utils/definition"
+import { quizResponse } from "@/libs/definition"
 import Link from "next/link"
 import React from "react"
 import { ArrowRight } from "../Icon"

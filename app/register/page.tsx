@@ -3,8 +3,8 @@
 import LoginButton from '@/components/Authentication/LoginButton';
 import Loading from '@/components/Loading';
 import Selection from '@/components/Selection';
-import { register } from '@/utils/actions/auth';
-import { userRole } from '@/utils/data';
+import { register } from '@/libs/actions/auth';
+import { userRole } from '@/libs/data';
 import { QueryClient, QueryClientProvider, useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner'
 

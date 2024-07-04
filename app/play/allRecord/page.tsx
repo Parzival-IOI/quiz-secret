@@ -1,6 +1,6 @@
 import DataTable from "@/components/play/allRecord/DataTable"
-import { fetchTable } from "@/utils/actions/listdata"
-import { recordAllDataTable } from "@/utils/data"
+import { fetchTable } from "@/libs/actions/listdata"
+import { recordAllDataTable } from "@/libs/data"
 
 
 const page = () => {

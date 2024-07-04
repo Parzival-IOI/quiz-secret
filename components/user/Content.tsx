@@ -1,7 +1,7 @@
-import { usersResponse } from "@/utils/definition"
-import { Pencil, Trash } from "@/components/Icon";
+import { usersResponse } from "@/libs/definition"
+import { Pencil } from "@/components/Icon";
 import CustomActionButton from "@/components/CustomActionButton";
-import { deleteUserAction } from "@/utils/user/deleteAction";
+import { deleteUserAction } from "@/libs/user/deleteAction";
 import CustomDialog from "../CustomDialog";
 
 const Content = (props: {data: usersResponse | null, loadData: Function, page: number}) => {

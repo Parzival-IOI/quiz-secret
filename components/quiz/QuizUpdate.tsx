@@ -3,10 +3,11 @@
 import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-query";
 import Loading from "../Loading";
 import { toast } from "sonner";
-import { findOneAction } from "@/utils/quiz/findOneAction";
-import { quiz } from "@/utils/definition";
-import { Suspense, useEffect, useState } from "react";
+import { findOneAction } from "@/libs/quiz/findOneAction";
+import { quiz } from "@/libs/definition";
+import { useEffect, useState } from "react";
 import FormUpdate from "./FormUpdate";
+import { updateQuiz } from "@/libs/quiz/updateQuizAction";
 const queryClient = new QueryClient();
 
 const QuizUpdate = ({id}: {id: string}) => {
@@ -25,39 +26,40 @@ const FormData = ({id} : {id: string}) => {
 
   const [quiz, setQuiz] = useState<quiz | undefined>(); 
   
-  const{mutate: server_updateQuiz, isPending} = useMutation({
-    mutationFn: findOneAction,
-    onSuccess: (data: quiz | undefined) => {
-      
-    },
-    onError: (e) => {
-      toast(e.message);
-    }
-  })
-
-  const{data ,mutate: server_findOne, isPending: pendingFindOne} = useMutation({
-    mutationFn: findOneAction,
+  const{mutate: server_findOne, isPending: pendingFindOne} = useMutation({
+    mutationFn: findOneAction.bind(null, id),
     onSuccess: (data: quiz | undefined) => {
       setQuiz(data);
     },
     onError: (e) => {
-      toast(e.message);
+      toast.error(e.message);
+    }
+  })
+
+  const{mutate: server_UpdateQuiz, isPending: pendingUpdate} = useMutation({
+    mutationFn: updateQuiz.bind(null, id),
+    onSuccess: () => {
+      toast.success("success");
+    },
+    onError: (e) => {
+      toast.error(e.message);
     }
   })
 
   useEffect(() => {
 
-    server_findOne(id);
+    server_findOne();
 
   }, []);
 
+  if (pendingFindOne) {
+    return <Loading/>;
+  }
+
   return (
     <>
-      {(isPending || pendingFindOne) && <Loading/>}
-      <Suspense>
-        <FormUpdate action={server_updateQuiz} quiz={quiz} />
-      </Suspense>
-      
+      {pendingUpdate && <Loading/>}
+      <FormUpdate quiz={quiz} id={id} action={server_UpdateQuiz} />
     </>
   )
 }

@@ -1,8 +1,8 @@
-import { quizzesResponse } from "@/utils/definition"
+import { quizzesResponse } from "@/libs/definition"
 import CustomActionButton from "../CustomActionButton"
 import CustomDialog from "../CustomDialog"
 import { Eye, Pencil, People } from "../Icon"
-import { deleteQuizAction } from '@/utils/quiz/deleteAction';
+import { deleteQuizAction } from '@/libs/quiz/deleteAction';
 
 
 const Content = (props: {data: quizzesResponse | null, loadData: Function, page: number}) => {

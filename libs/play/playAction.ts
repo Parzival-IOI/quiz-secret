@@ -1,6 +1,6 @@
 "use server";
 
-import { customFetch } from "@/utils/customFetch";
+import { customFetch } from "@/libs/customFetch";
 import { redirect } from "next/navigation";
 
 export const playAction = async (id: string, formData: FormData) => {

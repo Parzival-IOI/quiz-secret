@@ -1,5 +1,5 @@
 import UserCreate from "@/components/user/UserCreate"
-import { User } from "@/utils/definition"
+import { User } from "@/libs/definition"
 
 
 const page = () => {

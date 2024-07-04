@@ -1,8 +1,8 @@
-import { recordResponse } from "@/utils/definition"
+import { recordResponse } from "@/libs/definition"
 import CustomActionButton from "../../CustomActionButton"
 import CustomDialog from "../../CustomDialog"
 import { Eye } from "../../Icon"
-import { deletePlayAction } from "@/utils/play/deletePlayAction";
+import { deletePlayAction } from "@/libs/play/deletePlayAction";
 
 
 const Content = (props: {data: recordResponse[] | null, loadData: Function, page: number}) => {

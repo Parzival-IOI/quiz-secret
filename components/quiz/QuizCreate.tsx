@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-q
 import Loading from "../Loading";
 import { toast } from "sonner";
 import Form from "./Form";
-import { createQuizAction } from "@/utils/quiz/createAction";
+import { createQuizAction } from "@/libs/quiz/createAction";
 const queryClient = new QueryClient();
 
 const QuizCreate = () => {

@@ -1,4 +1,4 @@
-import { User } from "@/utils/definition";
+import { User } from "@/libs/definition";
 import { cookies } from "next/headers";
 
 export const findOneAction = async (id: string) => {

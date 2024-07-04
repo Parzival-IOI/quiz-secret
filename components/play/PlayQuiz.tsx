@@ -2,11 +2,11 @@
 import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-query";
 import Carousel from "./Carousel"
 import { toast } from "sonner";
-import { playAction } from "@/utils/play/playAction";
+import { playAction } from "@/libs/play/playAction";
 import Loading from "../Loading";
 import { useEffect, useState } from "react";
-import { findOneAction } from "@/utils/play/findOneAction";
-import { playQuizResponse } from "@/utils/definition";
+import { findOneAction } from "@/libs/play/findOneAction";
+import { playQuizResponse } from "@/libs/definition";
 import PlayQuestionForm from "./PlayQuestionForm";
 
 const queryClient = new QueryClient();

@@ -1,7 +1,7 @@
 'use server'
 
-import { dataTable } from "@/utils/definition";
-import { customFetch } from "@/utils/customFetch";
+import { dataTable } from "@/libs/definition";
+import { customFetch } from "@/libs/customFetch";
 
 export async function fetchTable(data: dataTable, path: string) {
   try {

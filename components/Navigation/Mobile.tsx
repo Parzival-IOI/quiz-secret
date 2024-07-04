@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Burger, Cross } from '@/components/Icon';
 import LogoutButton from '@/components/Authentication/LogoutButton';
 import Link from 'next/link';
-import { adminPath, otherPath } from '@/utils/data';
+import { adminPath, otherPath } from '@/libs/data';
 
 const Mobile = (props: {current: string, nav: {path: string, name: string}[], userRole: string}) => {
   const [isOpen, setIsOpen] = useState(false);

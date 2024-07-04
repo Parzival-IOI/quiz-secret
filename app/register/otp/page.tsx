@@ -2,7 +2,7 @@
 
 import LoginButton from '@/components/Authentication/LoginButton';
 import Loading from '@/components/Loading';
-import { otp, reSendOtp } from '@/utils/actions/auth';
+import { otp, reSendOtp } from '@/libs/actions/auth';
 import { QueryClient, QueryClientProvider, useMutation } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation'
 import { useState } from 'react';

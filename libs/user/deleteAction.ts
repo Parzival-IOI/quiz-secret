@@ -1,6 +1,6 @@
 "use server";
 
-import { customFetch } from "@/utils/customFetch";
+import { customFetch } from "@/libs/customFetch";
 
 export const deleteUserAction = async (id: string) => {
   try {

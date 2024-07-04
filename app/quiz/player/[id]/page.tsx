@@ -1,7 +1,7 @@
 
 import DataTable from "@/components/quiz/player/DataTable"
-import { fetchTablePlayer } from "@/utils/actions/listdata"
-import { quizPlayerDataTable } from "@/utils/data"
+import { fetchTablePlayer } from "@/libs/actions/listdata"
+import { quizPlayerDataTable } from "@/libs/data"
 
 
 const page = ({ params }: { params: { id: string } }) => {

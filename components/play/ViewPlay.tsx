@@ -4,11 +4,10 @@ import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-q
 import { toast } from "sonner";
 import { useCallback, useEffect, useState } from "react";
 import Loading from "../Loading";
-import { playFindOneViewResposne, quiz } from "@/utils/definition";
+import { playFindOneViewResposne } from "@/libs/definition";
 import { Check, Wrong } from "../Icon";
 import { useRouter } from "next/navigation";
-import { findOneViewAction } from "@/utils/play/findOneViewAction";
-import Answer from "../quiz/Answer";
+import { findOneViewAction } from "@/libs/play/findOneViewAction";
 
 const queryClient = new QueryClient();
 
@@ -94,7 +93,7 @@ const View = ({id} : {id: string}) => {
                       return (
                         <div key={index} className="flex items-center gap-2">
                           <div
-                            className={`group relative flex cursor-pointer rounded-lg py-4 px-5 shadow-lg ${answer.pick ? answer.correct ? "outline-1 outline-white bg-green-400/80 text-black dark:text-white" : "outline-1 outline-white bg-rose-400/80 text-black dark:text-white" : "outline-none bg-white/5 text-slate-600 dark:text-slate-400"}`}
+                            className={`group relative flex cursor-pointer rounded-lg py-4 px-5 shadow-lg ${answer.pick ? answer.correct ? "outline-1 outline-white bg-green-400/80 text-black dark:text-white" : "outline-1 outline-white bg-rose-400/80 text-black dark:text-white" : "outline-none dark:bg-white/10 bg-slate-300 text-slate-600 dark:text-slate-400"}`}
                           >
                             <div className="flex w-full items-center justify-between gap-2 sm:gap-4">
                               <div className="text-sm/6 font-semibold flex">

@@ -2,7 +2,7 @@
 import RegisterButton from '@/components/Authentication/RegisterButton';
 import Loading from '@/components/Loading';
 import LoginYeti from '@/components/LoginYeti';
-import { login } from '@/utils/actions/auth';
+import { login } from '@/libs/actions/auth';
 import { QueryClient, QueryClientProvider, useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner'
 import UseScript from '@/components/hook/useScript'

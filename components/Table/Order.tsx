@@ -1,5 +1,5 @@
 'use client'
-import { order } from '@/utils/data'
+import { order } from '@/libs/data'
 import React from 'react'
 
 const Order = (props: {orderSortFunc: Function}) => {

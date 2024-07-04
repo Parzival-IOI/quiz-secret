@@ -1,42 +1,12 @@
 "use client";
-
-import { useState } from "react";
-import Answer from "./Answer";
 import { Cross } from "../Icon";
-import { question } from "@/utils/definition";
+import { question } from "@/libs/definition";
+import AnswerUpdate from "./AnswerUpdate";
 
-const QuestionUpdate = (props: {id: number, handleFormChangeQuestion: Function, removeQuestion: Function, data : question}) => {
-
-  const [answer, setAnswer] = useState([
-    {answer: "", isCorrect: false}
-  ])
-
-  const handleFormChangeAnswer = (index: number, event: React.ChangeEvent<HTMLInputElement>, isAnswer: boolean) => {
-    let data = [...answer];
-    if(isAnswer) {
-      data[index]["answer"] = event.target.value;
-    } else {
-      const isCorrect = event.target.value
-      if(isCorrect == "TRUE") {
-        data[index]["isCorrect"] = true;
-      }
-      else {
-        data[index]["isCorrect"] = false;
-      }
-    }
-    setAnswer(data);
-  }
-
-  const addAnswer = () => {
-    const newAnswer = {answer: "", isCorrect: false};
-    setAnswer([...answer, newAnswer])
-  }
-
-  const removeAnswer = (index: number) => {
-    const answers = [...answer];
-    answers.splice(index, 1)
-    setAnswer(answers)
-  }
+const QuestionUpdate = (props: {id: number, handleFormChangeQuestion: Function, removeQuestion: Function,
+  data: question
+  ,handleFormChangeAnswer: Function, removeAnswer: Function, addAnswer: Function
+}) => {
 
   return (
     <>
@@ -44,11 +14,13 @@ const QuestionUpdate = (props: {id: number, handleFormChangeQuestion: Function, 
         <div className="w-full flex justify-end" >
           <button type="button" className="mt-2 p-1 rounded-lg dark:bg-slate-600 dark:hover:bg-slate-700 hover:bg-slate-300/50 text-slate-400" onClick={() => props.removeQuestion(props.id)}>{Cross()}</button>
         </div>
-        
+
+        <input type="hidden" name="question.id" defaultValue={props.data.id} />
 
         <div className="relative z-0 w-full mb-5 group">
           <textarea name="questions.question" id={"question" + props.id} className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required 
               onChange={event => props.handleFormChangeQuestion(props.id, event, true)}
+              value={props.data.question}
               rows={2}
 
             ></textarea>
@@ -67,6 +39,7 @@ const QuestionUpdate = (props: {id: number, handleFormChangeQuestion: Function, 
               name={"questions.type"}
               type="text"
               onChange={event => props.handleFormChangeQuestion(props.id, event, false)}
+              value={props.data.type}
               required
               className="block w-full h-10 rounded-md border-0 dark:bg-slate-600 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
@@ -74,14 +47,14 @@ const QuestionUpdate = (props: {id: number, handleFormChangeQuestion: Function, 
         </div>
 
         {
-          answer.map((data, index) => {
+          props.data.answers.map((data, index) => {
             return (
-              <Answer key={index} id={index} QId={props.id} handleFormChangeAnswer={handleFormChangeAnswer} removeAnswer={removeAnswer} />
+              <AnswerUpdate key={index} id={index} QId={props.id} data={data} handleFormChangeAnswer={props.handleFormChangeAnswer} removeAnswer={props.removeAnswer} />
             )
           })
         }
 
-        <button type="button" onClick={addAnswer} className="mt-4 px-2 py-1 rounded-md dark:bg-slate-500 bg-slate-300 hover:bg-slate-300/50 dark:hover:bg-slate-700" >Add Answer</button>
+        <button type="button" onClick={() => props.addAnswer(props.id)} className="mt-4 px-2 py-1 rounded-md dark:bg-slate-500 bg-slate-300 hover:bg-slate-300/50 dark:hover:bg-slate-700" >Add Answer</button>
 
       </div>
     </>
