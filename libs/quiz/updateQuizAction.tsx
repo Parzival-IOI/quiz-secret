@@ -1,4 +1,5 @@
 "use server";
+import { redirect } from "next/navigation";
 import { customFetch } from "../customFetch";
 
 export const updateQuiz = async (id: string, formData: FormData) => {
@@ -69,8 +70,11 @@ export const updateQuiz = async (id: string, formData: FormData) => {
     const url = process.env.API + "api/quiz/v2/update/" + id;
     const res = await customFetch(url, "PUT", JSON.stringify(data))
     if(res.ok) {
-      const data = await res.text();
-      return data;
+      // const data = await res.text();
+      // return data;
+
+      redirect("/myquiz")
+
     } else {
       console.log(res);
       throw new Error(await res.text())
