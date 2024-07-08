@@ -1,6 +1,7 @@
 "use server";
 
 import { customFetch } from "@/libs/customFetch";
+import { redirect } from "next/navigation";
 
 export const createQuizAction = async (formData: FormData) => {
 
@@ -40,7 +41,7 @@ export const createQuizAction = async (formData: FormData) => {
     } else if (key === "questions.answers.answer") {
       A.answer = val
     } else if (key === "questions.answers.correct") {
-      A.correct = (val === 'on')
+      A.correct = (val === 'true')
       answers.push(JSON.parse(JSON.stringify(A)))
     }
   })
@@ -61,8 +62,10 @@ export const createQuizAction = async (formData: FormData) => {
     const url = process.env.API + "api/quiz/create";
     const res = await customFetch(url, "POST", JSON.stringify(data))
     if(res.ok) {
-      const data = await res.text();
-      return data
+      // const data = await res.text();
+
+      redirect("/myquiz")
+      
     } else {
       console.log(res);
       throw new Error(await res.text())
