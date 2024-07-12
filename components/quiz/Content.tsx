@@ -4,43 +4,53 @@ import CustomDialog from "../CustomDialog"
 import { Download, Eye, Pencil, People } from "../Icon"
 import { deleteQuizAction } from '@/libs/quiz/deleteAction';
 import { exportExcelAction } from "@/libs/quiz/exportExcelAction";
+import { toast } from "sonner";
 
 
 const Content = (props: {data: quizzesResponse | null, loadData: Function, page: number}) => {
   const getExel = async (id: string, name: string) => {
     const access = await exportExcelAction();
-    fetch('/api/quiz/export/' + id, {
+    const response = await fetch('/api/quiz/export/' + id, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/xlsx',
         Authorization : access
       },
     })
-    .then((response) => response.blob())
-    .then((blob) => {
-      // Create blob link to download
-      const url = window.URL.createObjectURL(
-        new Blob([blob]),
-      );
-      console.log(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute(
-        'download',
-        `${name}.xlsx`,
-      );
-  
-      // Append to html link element page
-      document.body.appendChild(link);
-  
-      // Start download
-      link.click();
-  
-      // Clean up and remove the link
-      link.parentNode?.removeChild(link);
 
-    });
+    if(response.ok) {
+      toast.error("Something Went Wrong");
+      return;
+    }
+
+    const blob = await response.blob(); 
+
+    if(blob.size == 0) {
+      toast.error("Something Went Wrong");
+      return
+    }
+    // Create blob link to download
+    const url = window.URL.createObjectURL(
+      new Blob([blob]),
+    );
+    console.log(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute(
+      'download',
+      `${name}.xlsx`,
+    );
+
+    // Append to html link element page
+    document.body.appendChild(link);
+
+    // Start download
+    link.click();
+
+    // Clean up and remove the link
+    link.parentNode?.removeChild(link);
   }
+
   return (
     <div className="flex flex-col gap-1 text-sm px-1">
       <strong className="w-full py-2 px-4 dark:bg-slate-600 bg-slate-500 text-white rounded-t-lg grid grid-cols-datatable gap-1 sticky">
