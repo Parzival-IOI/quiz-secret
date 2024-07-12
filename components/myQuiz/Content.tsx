@@ -1,11 +1,46 @@
 import { quizzesResponse, recordResponse } from "@/libs/definition"
 import CustomActionButton from "../CustomActionButton"
 import CustomDialog from "../CustomDialog"
-import { Eye, Pencil, People } from "../Icon"
+import { Download, Eye, Pencil, People } from "../Icon"
 import { deleteQuizAction } from "@/libs/quiz/deleteAction";
+import { exportExcelAction } from "@/libs/quiz/exportExcelAction";
 
 
 const Content = (props: {data: quizzesResponse | null, loadData: Function, page: number}) => {
+  const getExel = async (id: string, name: string) => {
+    const access = await exportExcelAction();
+    fetch('/api/quiz/export/' + id, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/xlsx',
+        Authorization : access
+      },
+    })
+    .then((response) => response.blob())
+    .then((blob) => {
+      // Create blob link to download
+      const url = window.URL.createObjectURL(
+        new Blob([blob]),
+      );
+      console.log(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute(
+        'download',
+        `${name}.xlsx`,
+      );
+  
+      // Append to html link element page
+      document.body.appendChild(link);
+  
+      // Start download
+      link.click();
+  
+      // Clean up and remove the link
+      link.parentNode?.removeChild(link);
+
+    });
+  }
   return (
     <div className="flex flex-col gap-1 text-sm px-1">
       <strong className="w-full py-2 px-4 dark:bg-slate-600 bg-slate-500 text-white rounded-t-lg grid grid-cols-datatable gap-1 sticky">
@@ -29,6 +64,8 @@ const Content = (props: {data: quizzesResponse | null, loadData: Function, page:
               </div>
               <div className=" h-auto flex justify-center items-center flex-wrap gap-2">
 
+                <button type="button" className="px-2 py-2 rounded-md dark:bg-slate-500 dark:hover:bg-slate-700 bg-slate-400 hover:bg-slate-300"
+                  onClick={() => getExel(d.id, d.name)} ><Download /></button>
                 <CustomActionButton path={"/quiz/player/" + d.id} label={<People/>}/>
                 <CustomActionButton path={"/quiz/view/" + d.id} label={<Eye/>}/>
                 <CustomActionButton path={"/quiz/update/" + d.id} label={<Pencil/>}/>
